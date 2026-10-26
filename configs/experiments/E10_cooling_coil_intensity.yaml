@@ -1,5 +1,0 @@
-name: E10_cooling_coil_intensity
-task: fault_intensity_regression
-features: symptom_only
-split_policy: leave_fault_intensity_out
-intensity_fault_type: cooling_coil_valve_stuck

@@ -1,0 +1,31 @@
+{
+  "thresholds": [
+    {
+      "alert_budget": 0.1,
+      "fold": 1,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033445546869188547,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 8640
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 2,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.003345971228554845,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 8640
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 3,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033389138989150524,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 10080
+    }
+  ]
+}

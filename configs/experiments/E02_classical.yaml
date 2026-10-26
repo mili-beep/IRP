@@ -1,6 +1,0 @@
-name: E02_classical
-models:
-  - isolation_forest
-  - one_class_svm
-features: symptom_only
-split_policy: leave_fault_type_out

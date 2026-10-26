@@ -1,6 +1,0 @@
-predicted_fault_group,reports,correct_reports,observed_reliability,eligible
-airflow_distribution,3,1,0.3333333333333333,False
-airside_damper,17,9,0.5294117647058824,False
-cooling_coil,10,7,0.7,True
-heating_coil,9,7,0.7777777777777778,True
-return_fan,1,1,1.0,False

@@ -1,0 +1,7 @@
+name: D04b_control_weather
+models:
+  - statistical
+  - isolation_forest
+features: control_inclusive
+include_weather: true
+split_policy: leave_scenario_out

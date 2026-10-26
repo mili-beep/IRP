@@ -1,0 +1,2 @@
+model,event_recall,f1,false_alarms_per_day,fit_seconds,fpr,mean_detection_delay_minutes,pr_auc,precision,recall,roc_auc,score_seconds
+xgboost,1.0,0.9999807109928053,0.05555555555555555,0.608026014000643,3.8580246913580246e-05,0.0,1.0,0.9999614242178759,1.0,1.0,0.017951361000693094

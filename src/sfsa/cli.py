@@ -6,12 +6,10 @@ from pathlib import Path
 from .config import load_yaml
 from .data.manifest import build_real_manifest
 from .data.rbc_ashrae1312 import discover_real_files, validate_pairing
-from .diagnosis import apply_diagnosis_policy, apply_reliability_policy
+from .diagnosis import apply_reliability_policy
 from .events import build_events
 from .patterns import run_pattern_discovery
 from .priorities import build_priority_cards
-from .qa import write_run_qa
-from .reporting import build_investigation_view
 from .training import run_training
 
 
@@ -49,33 +47,28 @@ def build_parser() -> argparse.ArgumentParser:
     patterns.add_argument("--allow-audit-failures", action="store_true")
     events = subparsers.add_parser("events", help="Group saved anomaly rows into rate-limited events")
     events.add_argument("--run-dir", required=True, type=Path)
-    events.add_argument("--policy", default=Path("configs/event_policy.yaml"), type=Path)
+    events.add_argument(
+        "--policy", default=Path("configs/operational_policies/event_grouping.yaml"), type=Path
+    )
     events.add_argument("--patterns-run", type=Path, help="Optional P01 normal-mode run for event context")
     events.add_argument("--output-name", default="events", help="Named event subdirectory; default: events")
-    dashboard = subparsers.add_parser("dashboard", help="Build a static investigation view from saved run artefacts")
-    dashboard.add_argument("--run-dir", required=True, type=Path)
-    dashboard.add_argument("--patterns-run", type=Path, help="Optional P01 normal-mode run for normal-mode evidence")
-    qa = subparsers.add_parser("report-qa", help="Check a completed run before reporting results")
-    qa.add_argument("--run-dir", required=True, type=Path)
-    diagnosis = subparsers.add_parser("diagnosis-policy", help="Apply confidence-based triage to a diagnosis run")
-    diagnosis.add_argument("--run-dir", required=True, type=Path)
-    diagnosis.add_argument("--policy", required=True, type=Path)
-    diagnosis.add_argument("--output-name", default="diagnosis_policy")
     reliability = subparsers.add_parser(
         "calibrate-diagnosis",
         help="Gate diagnosis labels using held-out report reliability evidence",
     )
     reliability.add_argument("--run-dir", required=True, type=Path)
     reliability.add_argument("--policy", required=True, type=Path)
-    reliability.add_argument("--output-name", default="reliability_policy")
+    reliability.add_argument("--output-name", default="O01_reliability_gated")
     priority = subparsers.add_parser(
         "prioritise-events",
         help="Create configurable priority cards from saved events and diagnoses",
     )
     priority.add_argument("--events-dir", required=True, type=Path)
     priority.add_argument("--diagnosis-dir", required=True, type=Path)
-    priority.add_argument("--policy", default=Path("configs/priority_policy.yaml"), type=Path)
-    priority.add_argument("--output-name", default="priority_cards")
+    priority.add_argument(
+        "--policy", default=Path("configs/operational_policies/O02_priority_policy.yaml"), type=Path
+    )
+    priority.add_argument("--output-name", default="O02_priority_cards")
     return parser
 
 
@@ -130,15 +123,6 @@ def main() -> None:
             output_name=args.output_name,
         )
         print(f"Saved event artefacts to {output}")
-    elif args.command == "dashboard":
-        output = build_investigation_view(args.run_dir, patterns_run=args.patterns_run)
-        print(f"Saved static investigation view to {output}")
-    elif args.command == "report-qa":
-        output = write_run_qa(args.run_dir)
-        print(f"Saved report QA to {output}")
-    elif args.command == "diagnosis-policy":
-        output = apply_diagnosis_policy(args.run_dir, args.policy, output_name=args.output_name)
-        print(f"Saved diagnosis-policy artefacts to {output}")
     elif args.command == "calibrate-diagnosis":
         output = apply_reliability_policy(args.run_dir, args.policy, output_name=args.output_name)
         print(f"Saved reliability-policy artefacts to {output}")

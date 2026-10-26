@@ -1,0 +1,6 @@
+name: D01_baseline
+models:
+  - statistical
+  - isolation_forest
+features: symptom_only
+split_policy: leave_scenario_out

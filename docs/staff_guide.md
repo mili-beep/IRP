@@ -11,7 +11,7 @@ sfsa audit-rbc \
   --manifest /tmp/rbc_manifest.json
 sfsa train \
   --building-config configs/buildings/rbc_ashrae1312_real.yaml \
-  --experiment-config configs/experiments/E01_baseline.yaml
+  --experiment-config configs/experiments/D01_baseline.yaml
 ```
 
 The trainer creates a timestamped directory under `results/runs/`. For a
@@ -42,7 +42,7 @@ features. Request these settings explicitly, and confirm the saved
 ```bash
 sfsa train \
   --building-config configs/buildings/rbc_ashrae1312_real.yaml \
-  --experiment-config configs/experiments/E01_baseline.yaml \
+  --experiment-config configs/experiments/D01_baseline.yaml \
   --set include_weather=true \
   --set temporal.enabled=true \
   --set occupied_hours.apply=true
@@ -50,7 +50,7 @@ sfsa train \
 
 ## Use pattern outputs in the report
 
-Run `sfsa patterns` with `P01_normal_patterns.yaml`. Use
+Run `sfsa patterns` with `P01_normal_operating_patterns.yaml`. Use
 `normal_mode_catalogue.csv` with `normal_mode_feature_profiles.csv` to describe
 each mode, cite `normal_mode_quality.json` for stability/separation, and use
 the two PNG files under `figures/` in the report or presentation.
@@ -60,20 +60,20 @@ production alerts.
 ## Create operational artefacts from a completed run
 
 ```bash
-sfsa events --run-dir results/runs/<benchmark-run>
+sfsa events \
+  --run-dir results/final_runs/<D07-run> \
+  --output-name O02_events
+sfsa calibrate-diagnosis \
+  --run-dir results/final_runs/<G03a-run> \
+  --policy configs/operational_policies/O01_reliability_gated.yaml
 sfsa prioritise-events \
-  --events-dir results/runs/<benchmark-run>/events \
-  --diagnosis-dir results/runs/<diagnosis-run>/<reliability-policy-output>
-sfsa dashboard --run-dir results/runs/<benchmark-run> \
-  --patterns-run results/runs/<P01-normal-pattern-run>
-sfsa report-qa --run-dir results/runs/<benchmark-run>
+  --events-dir results/final_runs/<D07-run>/O02_events \
+  --diagnosis-dir results/final_runs/<G03a-run>/O01_reliability_gated
 ```
 
-`events/events.csv` is rate-limited by `configs/event_policy.yaml`; it groups
+`O02_events/events.csv` is rate-limited by
+`configs/operational_policies/event_grouping.yaml`; it groups
 adjacent alert rows but does not assign a staff priority. `priority_cards.csv`
 is the one authoritative priority output. It uses the documented configurable
 severity, duration, and asset-criticality policy in
-`configs/priority_policy.yaml`. The static dashboard is a demonstration view
-over saved artefacts, not a live operations system. A `qa_report.json` warning
-about `max_folds` means the run is diagnostic-only and should not be a headline
-report result.
+`configs/operational_policies/O02_priority_policy.yaml`.

@@ -1,0 +1,12 @@
+{
+  "anomaly_reports": 40,
+  "fault_group_shown": 17,
+  "fault_group_uncertain": 23,
+  "fault_reports": 40,
+  "fault_type_shown": 10,
+  "fault_type_uncertain": 30,
+  "limitation": "Reliability is descriptive cross-validated evidence from this source dataset; it is not a guaranteed probability for a new building.",
+  "minimum_reliability": 0.7,
+  "minimum_reports": 5,
+  "report_unit": "one held-out date/scenario fault session"
+}

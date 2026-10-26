@@ -1,2 +1,0 @@
-model,event_recall,f1,false_alarms_per_day,fit_seconds,fpr,mean_detection_delay_minutes,pr_auc,precision,recall,roc_auc,score_seconds,selection_basis
-supervised,1.0,0.985361338868628,44.0906432748538,0.653663722332567,0.030618502274204026,0.0,0.9990501912191014,0.9719511575065715,1.0,0.9990098386754328,0.027632403003129486,validation recall minus false-positive rate; F1 breaks ties

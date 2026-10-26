@@ -18,7 +18,8 @@ Each component has a 1--5 level and is first normalised to 0--1:
 `score = 100 × [0.50 × (severity - 1) / 4 + 0.30 × (duration - 1) / 4 + 0.20 × (criticality - 1) / 4]`
 
 The exact mappings, weights, thresholds, and action text are saved in
-`configs/priority_policy.yaml` with every generated output.
+`configs/operational_policies/O02_priority_policy.yaml` with every generated
+output.
 
 | Score | Priority | Response |
 |---:|---|---|

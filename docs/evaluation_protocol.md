@@ -26,16 +26,11 @@ it excludes valve, damper, and fan-position fields that can encode a controlled
 fault setting. `control_inclusive` remains available only for explicitly scoped
 instrumented-telemetry sensitivity studies.
 
-E16 is the registered instrumented-telemetry sensitivity study. It includes
+G03a is the primary XGBoost instrumented-telemetry diagnosis study. It includes
 direct valve, damper, and fan-speed/control fields alongside the passive
 symptom and physics features. These fields are valid only when equivalent BMS
 telemetry is available at prediction time; the result must not be interpreted
 as diagnosis from symptoms alone or as command-versus-feedback fault proof.
-
-E17 extends E16 with VAV and zone-level BMS fields. It tests whether downstream
-room and VAV responses add diagnostic value beyond the AHU-level telemetry in
-E16. These fields are included only as a full-building instrumented-diagnosis
-comparison and are evaluated using the same complete-date holdouts.
 
 Physics-informed features are opt-in and are saved alongside each run's selected
 columns. The passive set contains supply/mixed-air and coil/water temperature
@@ -46,7 +41,9 @@ both independently documented command and feedback signals are available.
 
 ## Headline splits
 
-Random row splits are diagnostic only. Primary evaluations use complete date, season, fault-scenario, or fault-intensity holdouts. Temporal features are computed within scenario/date boundaries and never across baseline/fault boundaries.
+Random row splits are diagnostic only. Primary evaluations use complete date,
+season, or fault-scenario holdouts. Temporal features are computed within
+scenario/date boundaries and never across baseline/fault boundaries.
 
 The configured split policy creates repeated folds. Each test fold includes all
 fault rows for the held-out unit and the paired same-date normal baseline rows.
@@ -63,7 +60,7 @@ tie. Test results are reserved for reporting, not model selection.
 
 Report row-level precision, recall, F1, false-positive rate, ROC-AUC, and
 PR-AUC, plus event recall, detection delay, false alarms per day, and
-performance by fault type, intensity, and season. ROC-AUC and PR-AUC are
+performance by fault type and season. ROC-AUC and PR-AUC are
 reported from continuous held-out scores only when both classes are present.
 
 Save per-fold values, aggregate means and medians, bootstrap confidence
@@ -74,25 +71,19 @@ importance as a separate, scenario-classification explanation.
 
 ## Supervised diagnosis extension
 
-The binary E03 supervised benchmark predicts only `normal` or `fault`. The
-separate E09 fault-type study predicts `normal` plus a fault-family label.
+The binary D03 supervised benchmark predicts only `normal` or `fault`. The
+separate G01 fault-type study predicts `normal` plus a fault-family label.
 It uses complete date holdouts and includes only families with at least two
 separate scenarios; singleton families are explicitly recorded as unsupported,
 not silently treated as learned classes.
 
-E10 is a conditional severity-regression study for `cooling_coil_valve_stuck`.
-It predicts numeric valve position only after that fault family is known. Its
-reported error therefore measures within-family severity estimation, not an
-end-to-end fault-type-and-intensity result. Other families use incompatible
-units and are not combined into one invalid global intensity target.
-
-E11 is a hierarchical version of E09. It first predicts `normal` or a broad
+G02 is a hierarchical version of G01. It first predicts `normal` or a broad
 operational group (airside damper, heating coil, cooling coil, return fan, or
 airflow distribution), then predicts the fine-grained type only within the
-predicted group. It retains E09 as the flat-classification benchmark and saves
+predicted group. It retains G01 as the flat-classification benchmark and saves
 both fine- and coarse-group confusion matrices.
 
-E18 is a reporting-policy evaluation applied to E16's saved complete-date
+O01 is a reporting-policy evaluation applied to G03a's saved complete-date
 held-out predictions. It creates one report per fault day rather than treating
 minute rows as independent evidence. A predicted fault group or type is shown
 only where that predicted label has at least five held-out reports and at least
@@ -100,7 +91,7 @@ only where that predicted label has at least five held-out reports and at least
 The saved reliability values are descriptive evidence for this dataset and
 must not be presented as guaranteed probabilities for an unseen building.
 
-E19 evaluates the frozen E03 supervised binary configuration with each season
+D08 evaluates the frozen D07 XGBoost binary configuration with each season
 held out in turn. It isolates seasonal generalisation from changes in model,
 feature policy, or alert budget. It remains a one-facility controlled-fault
 test and does not establish external-building deployment performance.

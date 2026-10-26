@@ -1,0 +1,5 @@
+predicted_fault_group,reports,correct_reports,observed_reliability,eligible
+airflow_distribution,2,1,0.5,False
+airside_damper,21,11,0.5238095238095238,False
+cooling_coil,10,8,0.8,True
+heating_coil,7,6,0.8571428571428571,True

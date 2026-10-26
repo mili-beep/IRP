@@ -1,0 +1,6 @@
+name: D06_classical_season_generalisation
+models:
+  - statistical
+  - isolation_forest
+features: symptom_only
+split_policy: leave_season_out

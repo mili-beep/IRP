@@ -2,12 +2,12 @@
 
 from .classical import isolation_forest, one_class_svm
 from .statistical import ZScoreModel
-from .supervised import gradient_boosting, gradient_boosting_regressor
+from .supervised import gradient_boosting, xgboost_classifier
 
 __all__ = [
 	"ZScoreModel",
 	"gradient_boosting",
-	"gradient_boosting_regressor",
 	"isolation_forest",
 	"one_class_svm",
+	"xgboost_classifier",
 ]

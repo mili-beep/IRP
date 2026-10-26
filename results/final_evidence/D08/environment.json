@@ -1,0 +1,30 @@
+{
+  "packages": {
+    "PyYAML": "6.0.3",
+    "joblib": "1.6.0",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1"
+  },
+  "platform": {
+    "machine": "arm64",
+    "release": "24.6.0",
+    "system": "Darwin"
+  },
+  "project_files": {
+    "pyproject.toml": {
+      "sha256": "fb6be872372da62b8a5fe234659630ea63b968d29dfbd96d71f4e9f22f700155",
+      "size_bytes": 692
+    },
+    "uv.lock": {
+      "sha256": "f670043652e773712e9d9b0fbb163a34aeee794b830bcbe60be1dcf0fd6c8554",
+      "size_bytes": 211354
+    }
+  },
+  "python": {
+    "executable": "/Users/mili/Desktop/IRP/.venv/bin/python",
+    "implementation": "CPython",
+    "version": "3.13.12"
+  }
+}

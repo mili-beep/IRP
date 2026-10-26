@@ -1,0 +1,166 @@
+{
+  "building": {
+    "baseline_filename": "baseline.csv",
+    "data_path": "data/raw/01_RBC-ASHRAE1312/Real",
+    "date_folder_format": "%m%d%Y",
+    "features": {
+      "default_policy": "symptom_only",
+      "dictionary_document": "docs/reference/rbc_ashrae1312/feature_dictionary.md",
+      "imputation": {
+        "fit_on_training_only": true,
+        "strategy": "median"
+      },
+      "include_vav": false,
+      "reviewed_mapping_document": "src/sfsa/features.py",
+      "temporal": {
+        "boundary_columns": [
+          "scenario_file",
+          "date_folder"
+        ],
+        "enabled": false,
+        "rolling_window": 5
+      },
+      "weather_optional": true
+    },
+    "labels": {
+      "scenario_from_filename": true,
+      "taxonomy_document": "docs/reference/rbc_ashrae1312/fault_taxonomy.md"
+    },
+    "name": "rbc_ashrae1312_real",
+    "seasons": [
+      "Summer",
+      "Transition",
+      "Winter"
+    ],
+    "source_type": "real",
+    "timestamp": {
+      "date_column": "DATE",
+      "expected_interval": "1min",
+      "time_column": "TIME",
+      "time_format": "HHMM",
+      "timezone": null
+    },
+    "weather_filename": "weather.csv"
+  },
+  "experiment": {
+    "features": "symptom_only",
+    "minimum_scenarios_per_type": 2,
+    "name": "G02a_hierarchical_baseline",
+    "split_policy": "leave_date_out",
+    "task": "hierarchical_fault_type_classification"
+  },
+  "resolved": {
+    "alert_budget": 0.1,
+    "baseline_filename": "baseline.csv",
+    "bootstrap_iterations": 1000,
+    "data_path": "data/raw/01_RBC-ASHRAE1312/Real",
+    "date_folder_format": "%m%d%Y",
+    "expected_interval": "1min",
+    "explanation_cases_per_type": 3,
+    "explanation_top_features": 5,
+    "feature_policy": "symptom_only",
+    "features": {
+      "default_policy": "symptom_only",
+      "dictionary_document": "docs/reference/rbc_ashrae1312/feature_dictionary.md",
+      "imputation": {
+        "fit_on_training_only": true,
+        "strategy": "median"
+      },
+      "include_vav": false,
+      "reviewed_mapping_document": "src/sfsa/features.py",
+      "temporal": {
+        "boundary_columns": [
+          "scenario_file",
+          "date_folder"
+        ],
+        "enabled": false,
+        "rolling_window": 5
+      },
+      "weather_optional": true
+    },
+    "headline_split": "complete_date",
+    "importance_sample_rows": 1000,
+    "include_vav": false,
+    "include_weather": false,
+    "labels": {
+      "scenario_from_filename": true,
+      "taxonomy_document": "docs/reference/rbc_ashrae1312/fault_taxonomy.md"
+    },
+    "minimum_scenarios_per_type": 2,
+    "missing_data_policy": "report_then_configure_imputation",
+    "model_candidates": {
+      "isolation_forest": [
+        {
+          "contamination": 0.05
+        },
+        {
+          "contamination": 0.1
+        }
+      ],
+      "one_class_svm": [
+        {
+          "components": 100,
+          "nu": 0.05
+        },
+        {
+          "components": 100,
+          "nu": 0.1
+        }
+      ],
+      "statistical": [
+        {}
+      ],
+      "supervised": [
+        {}
+      ],
+      "xgboost": [
+        {}
+      ]
+    },
+    "name": "G02a_hierarchical_baseline",
+    "normal_modes": {
+      "clusters": 4,
+      "silhouette_sample_rows": 2000,
+      "stability_repeats": 2,
+      "stability_sample_rows": 5000
+    },
+    "occupied_hours": {
+      "apply_by_default": false,
+      "end": "18:00",
+      "start": "06:00"
+    },
+    "physics_features": {
+      "enabled": false,
+      "include_control_relationships": false
+    },
+    "random_row_split": "diagnostic_only",
+    "scenario_balancing": false,
+    "seasons": [
+      "Summer",
+      "Transition",
+      "Winter"
+    ],
+    "seed": 42,
+    "source_type": "real",
+    "split_policy": "leave_date_out",
+    "task": "hierarchical_fault_type_classification",
+    "temporal": {
+      "boundary_columns": [
+        "scenario_file",
+        "date_folder"
+      ],
+      "enabled": false,
+      "rolling_window": 5
+    },
+    "timestamp": {
+      "date_column": "DATE",
+      "expected_interval": "1min",
+      "time_column": "TIME",
+      "time_format": "HHMM",
+      "timezone": null
+    },
+    "timezone": null,
+    "validation_fraction": 0.2,
+    "weather_filename": "weather.csv"
+  }
+}

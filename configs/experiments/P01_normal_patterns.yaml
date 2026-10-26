@@ -1,5 +1,0 @@
-name: P01_normal_patterns
-features: control_inclusive
-include_weather: true
-normal_modes:
-  clusters: 4

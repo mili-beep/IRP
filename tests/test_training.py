@@ -17,7 +17,7 @@ ROOT = Path(__file__).parents[1]
 def test_real_training_writes_a_run(tmp_path):
     run_dir = run_training(
         ROOT / "configs" / "buildings" / "rbc_ashrae1312_real.yaml",
-        ROOT / "configs" / "experiments" / "E01_baseline.yaml",
+        ROOT / "configs" / "experiments" / "D01_baseline.yaml",
         results_root=tmp_path,
         override_values=["max_folds=1"],
     )
@@ -64,7 +64,7 @@ def test_continuous_score_metrics_are_available_for_binary_labels():
 def test_training_applies_weather_and_temporal_overrides(tmp_path):
     run_dir = run_training(
         ROOT / "configs" / "buildings" / "rbc_ashrae1312_real.yaml",
-        ROOT / "configs" / "experiments" / "E01_baseline.yaml",
+        ROOT / "configs" / "experiments" / "D01_baseline.yaml",
         results_root=tmp_path,
         override_values=["include_weather=true", "temporal.enabled=true", "max_folds=1"],
     )
@@ -89,7 +89,7 @@ def test_occupied_hours_filter_only_applies_when_explicitly_enabled():
 def test_supervised_diagnosis_tasks_write_task_specific_outputs(tmp_path):
     type_run = run_training(
         ROOT / "configs" / "buildings" / "rbc_ashrae1312_real.yaml",
-        ROOT / "configs" / "experiments" / "E09_fault_type_classification.yaml",
+        ROOT / "configs" / "experiments" / "G01_fault_type_classification.yaml",
         results_root=tmp_path,
         override_values=["max_folds=1"],
     )
@@ -102,7 +102,7 @@ def test_supervised_diagnosis_tasks_write_task_specific_outputs(tmp_path):
 
     hierarchical_run = run_training(
         ROOT / "configs" / "buildings" / "rbc_ashrae1312_real.yaml",
-        ROOT / "configs" / "experiments" / "E11_hierarchical_fault_type_classification.yaml",
+        ROOT / "configs" / "experiments" / "G02a_hierarchical_baseline.yaml",
         results_root=tmp_path,
         override_values=["max_folds=1"],
     )
@@ -115,40 +115,6 @@ def test_supervised_diagnosis_tasks_write_task_specific_outputs(tmp_path):
     assert set(hierarchical_predictions["predicted_fault_type"]).issubset(
         {"normal", *scope["included_fault_types"]}
     )
-
-    intensity_run = run_training(
-        ROOT / "configs" / "buildings" / "rbc_ashrae1312_real.yaml",
-        ROOT / "configs" / "experiments" / "E10_cooling_coil_intensity.yaml",
-        results_root=tmp_path,
-        override_values=["max_folds=1"],
-    )
-    assert (intensity_run / "intensity_scope.json").exists()
-    intensity_predictions = pd.read_csv(intensity_run / "predictions.csv")
-    assert {"true_intensity", "predicted_intensity", "routing"}.issubset(
-        intensity_predictions.columns
-    )
-
-
-def test_diagnosis_policy_writes_confidence_triage(tmp_path):
-    from sfsa.diagnosis import apply_diagnosis_policy
-
-    run_dir = tmp_path / "run"
-    run_dir.mkdir()
-    pd.DataFrame({
-        "fold": [1, 1, 1],
-        "true_fault_type": ["normal", "cooling_coil_valve_stuck", "air_filter_blockage"],
-        "predicted_fault_type": ["normal", "cooling_coil_valve_stuck", "exhaust_air_damper_stuck"],
-        "true_fault_group": ["normal", "cooling_coil", "airflow_distribution"],
-        "predicted_fault_group": ["normal", "cooling_coil", "airside_damper"],
-        "confidence": [0.99, 0.90, 0.60],
-    }).to_csv(run_dir / "predictions.csv", index=False)
-    policy = tmp_path / "policy.yaml"
-    policy.write_text("medium_threshold: 0.50\nhigh_threshold: 0.80\n", encoding="utf-8")
-    output = apply_diagnosis_policy(run_dir, policy)
-    recommendations = pd.read_csv(output / "diagnosis_recommendations.csv")
-    assert recommendations["diagnosis_level"].tolist() == ["normal", "high", "medium"]
-    assert (output / "diagnosis_policy_summary.csv").exists()
-
 
 def test_reliability_policy_gates_reports_at_the_session_level(tmp_path):
     from sfsa.diagnosis import apply_reliability_policy

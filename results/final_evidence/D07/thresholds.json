@@ -1,0 +1,373 @@
+{
+  "thresholds": [
+    {
+      "alert_budget": 0.1,
+      "fold": 1,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 2,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 3,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 4,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 5,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 6,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 7,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.003332932014018297,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 8,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 9,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.003332932014018297,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 10,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 11,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 12,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 13,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 14,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 15,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.003332932014018297,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 16,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033335371408611536,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 17,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033335371408611536,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 18,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 19,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 20,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 21,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 22,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 23,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 24,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 25,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 26,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329399302601814,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 27,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.003332932014018297,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 28,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 29,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.003332932014018297,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 30,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 31,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 32,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.003333534114062786,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 33,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 34,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 35,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 36,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 37,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 38,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 39,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 40,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 41,
+      "model": "xgboost",
+      "parameters": {},
+      "threshold": 0.0033329257275909185,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    }
+  ]
+}

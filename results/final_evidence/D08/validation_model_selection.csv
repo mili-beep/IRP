@@ -1,0 +1,4 @@
+fold,model,candidate,parameters,fit_seconds,threshold,validation_fpr,validation_f1,validation_precision,validation_recall,selected
+1,xgboost,1,{},0.5817846669815481,0.0033445546869188547,0.0,1.0,1.0,1.0,True
+2,xgboost,1,{},0.5531760000158101,0.003345971228554845,0.0,1.0,1.0,1.0,True
+3,xgboost,1,{},0.6891173750045709,0.0033389138989150524,0.0,1.0,1.0,1.0,True

@@ -1,4 +1,4 @@
-"""Scenario-held-out supervised diagnosis and conditional severity studies."""
+"""Scenario-held-out supervised fault-diagnosis studies."""
 
 from __future__ import annotations
 
@@ -14,8 +14,6 @@ from sklearn.metrics import (
 	balanced_accuracy_score,
 	confusion_matrix,
 	f1_score,
-	mean_absolute_error,
-	mean_squared_error,
 	precision_score,
 	recall_score,
 )
@@ -23,14 +21,14 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 from .config import resolve_run_config
 from .data.manifest import build_real_manifest
-from .evaluation.splits import leave_one_group_out, paired_holdout_splits
+from .evaluation.splits import paired_holdout_splits
 from .features import (
 	add_physics_features,
 	classify_columns,
 	fit_numeric_imputer,
 	select_feature_columns,
 )
-from .models import gradient_boosting, gradient_boosting_regressor
+from .models import gradient_boosting, xgboost_classifier
 from .training import (
 	_load_tables,
 	_make_run_dir,
@@ -41,7 +39,7 @@ from .training import (
 from .utils import capture_environment, set_seed, write_json
 
 # Every parsed RBC fault type has one operationally meaningful parent group.
-# E11 learns the parent first, then distinguishes types within that group.
+# G02 learns the parent first, then distinguishes types within that group.
 FAULT_GROUPS = {
 	"air_filter_blockage": "airflow_distribution",
 	"cooling_coil_valve_stuck": "cooling_coil",
@@ -248,6 +246,15 @@ def run_fault_type_classification(
 	if resolved.get("split_policy") != "leave_date_out":
 		raise ValueError("Fault-type classification requires split_policy=leave_date_out")
 	hierarchical = resolved.get("task") == "hierarchical_fault_type_classification"
+	classifier = str(resolved.get("classifier", "histogram_gradient_boosting"))
+	if classifier == "histogram_gradient_boosting":
+		classifier_factory = gradient_boosting
+		model_prefix = "supervised"
+	elif classifier == "xgboost":
+		classifier_factory = xgboost_classifier
+		model_prefix = "xgboost"
+	else:
+		raise ValueError(f"Unsupported diagnosis classifier: {classifier}")
 	scenario_balancing = bool(resolved.get("scenario_balancing", False))
 	minimum = int(resolved.get("minimum_scenarios_per_type", 2))
 	scenarios = faults[["fault_type", "date_folder", "scenario_file"]].drop_duplicates()
@@ -276,7 +283,10 @@ def run_fault_type_classification(
 	preprocessing: dict[str, Any] = {}
 	confusion_rows: list[dict[str, Any]] = []
 	group_confusion_rows: list[dict[str, Any]] = []
-	model_name = "supervised_hierarchical_fault_type" if hierarchical else "supervised_fault_type"
+	model_name = (
+		f"{model_prefix}_hierarchical_fault_type"
+		if hierarchical else f"{model_prefix}_fault_type"
+	)
 	for fold, split in enumerate(splits, start=1):
 		train = frame.loc[split.train_index].copy()
 		test = frame.loc[split.test_index].copy()
@@ -294,7 +304,7 @@ def run_fault_type_classification(
 			train_groups = train["fault_group"].to_numpy(dtype=str)
 			test_groups = test["fault_group"].to_numpy(dtype=str)
 			group_encoder = LabelEncoder().fit(train_groups)
-			group_model = gradient_boosting(seed=int(resolved.get("seed", 42))).fit(
+			group_model = classifier_factory(seed=int(resolved.get("seed", 42))).fit(
 				train_x,
 				group_encoder.transform(train_groups),
 				sample_weight=_scenario_balanced_weights(train, train_groups) if scenario_balancing else None,
@@ -307,7 +317,7 @@ def run_fault_type_classification(
 					fine_models[group] = {"single_type": types[0]}
 					continue
 				fine_encoder = LabelEncoder().fit(train_y[train_mask])
-				fine_model = gradient_boosting(seed=int(resolved.get("seed", 42))).fit(
+				fine_model = classifier_factory(seed=int(resolved.get("seed", 42))).fit(
 					train_x[train_mask],
 					fine_encoder.transform(train_y[train_mask]),
 					sample_weight=(
@@ -323,7 +333,7 @@ def run_fault_type_classification(
 			}
 		else:
 			encoder = LabelEncoder().fit(train_y)
-			model = gradient_boosting(seed=int(resolved.get("seed", 42))).fit(
+			model = classifier_factory(seed=int(resolved.get("seed", 42))).fit(
 				train_x,
 				encoder.transform(train_y),
 				sample_weight=_scenario_balanced_weights(train, train_y) if scenario_balancing else None,
@@ -428,7 +438,7 @@ def run_fault_type_classification(
 		membership_tables.append(membership)
 		fold_dir = run_dir / "models" / f"fold_{fold:03d}"
 		fold_dir.mkdir(parents=True, exist_ok=True)
-		joblib.dump(model_bundle, fold_dir / "supervised_fault_type.joblib")
+		joblib.dump(model_bundle, fold_dir / f"{model_prefix}_fault_type.joblib")
 		joblib.dump(prep, fold_dir / "preprocessing.joblib")
 		preprocessing[f"fold_{fold:03d}"] = prep
 	_write_common(
@@ -458,121 +468,6 @@ def run_fault_type_classification(
 			"split_policy": "leave_date_out",
 			"fault_groups": {fault_type: FAULT_GROUPS[fault_type] for fault_type in supported}
 			if hierarchical else None,
-		},
-	)
-	return run_dir
-
-
-def run_fault_intensity_regression(
-	building_config: str | Path,
-	experiment_config: str | Path,
-	*,
-	results_root: str | Path = "results/runs",
-	override_values: list[str] | None = None,
-	allow_audit_failures: bool = False,
-) -> Path:
-	"""Estimate numeric severity within one known fault family only."""
-	bundle, project_root, _, _, faults, manifest = _context(
-		building_config,
-		experiment_config,
-		override_values=override_values or [],
-		allow_audit_failures=allow_audit_failures,
-	)
-	resolved = bundle["resolved"]
-	if resolved.get("split_policy") != "leave_fault_intensity_out":
-		raise ValueError("Intensity regression requires split_policy=leave_fault_intensity_out")
-	fault_type = str(resolved.get("intensity_fault_type", ""))
-	frame = faults[faults["fault_type"] == fault_type].copy()
-	if frame.empty:
-		raise ValueError(f"No rows found for intensity_fault_type={fault_type!r}")
-	frame["target_intensity"] = pd.to_numeric(frame["fault_intensity"], errors="coerce")
-	frame = frame.dropna(subset=["target_intensity"]).copy()
-	if frame["target_intensity"].nunique() < 3:
-		raise ValueError("Intensity regression requires at least three numeric intensity levels")
-	base_columns = _feature_columns(frame, resolved)
-	splits = _limit_folds(leave_one_group_out(frame, "target_intensity"), resolved)
-	set_seed(int(resolved.get("seed", 42)))
-	run_dir = _make_run_dir(Path(results_root), bundle["building"]["name"], bundle["experiment"]["name"])
-	metric_rows: list[dict[str, Any]] = []
-	prediction_tables: list[pd.DataFrame] = []
-	membership_tables: list[pd.DataFrame] = []
-	preprocessing: dict[str, Any] = {}
-	model_name = f"supervised_intensity_{fault_type}"
-	for fold, split in enumerate(splits, start=1):
-		train = frame.loc[split.train_index].copy()
-		test = frame.loc[split.test_index].copy()
-		train_x, test_x, columns, prep = _prepare(
-			train, test, base_columns, resolved, imputer_source=train
-		)
-		started = perf_counter()
-		model = gradient_boosting_regressor(seed=int(resolved.get("seed", 42))).fit(
-			train_x, train["target_intensity"].to_numpy(dtype=float)
-		)
-		fit_seconds = perf_counter() - started
-		started = perf_counter()
-		predicted = model.predict(test_x)
-		score_seconds = perf_counter() - started
-		actual = test["target_intensity"].to_numpy(dtype=float)
-		metric_rows.append({
-			"fold": fold,
-			"model": model_name,
-			"held_out_groups": "|".join(split.held_out_groups),
-			"fit_seconds": fit_seconds,
-			"score_seconds": score_seconds,
-			"mae": float(mean_absolute_error(actual, predicted)),
-			"rmse": float(mean_squared_error(actual, predicted) ** 0.5),
-			"mean_error": float(np.mean(predicted - actual)),
-		})
-		prediction_tables.append(pd.DataFrame({
-			"fold": fold,
-			"model": model_name,
-			"timestamp": test["timestamp"].to_numpy(),
-			"date_folder": test["date_folder"].to_numpy(),
-			"scenario_file": test["scenario_file"].to_numpy(),
-			"predicted_fault_type": fault_type,
-			"true_intensity": actual,
-			"predicted_intensity": predicted,
-			"routing": "conditional_on_known_fault_type",
-			"y_true": actual,
-			"prediction": predicted,
-			"score": predicted,
-			"threshold": np.nan,
-		}))
-		membership = frame.loc[split.train_index.union(split.test_index), [
-			"season", "date_folder", "scenario_file", "fault_type", "fault_intensity",
-		]].copy()
-		membership["partition"] = "train"
-		membership.loc[membership.index.isin(split.test_index), "partition"] = "test"
-		membership.insert(0, "fold", fold)
-		membership_tables.append(membership)
-		fold_dir = run_dir / "models" / f"fold_{fold:03d}"
-		fold_dir.mkdir(parents=True, exist_ok=True)
-		joblib.dump(model, fold_dir / "supervised_intensity.joblib")
-		joblib.dump(prep, fold_dir / "preprocessing.joblib")
-		preprocessing[f"fold_{fold:03d}"] = prep
-	_write_common(
-		run_dir=run_dir,
-		bundle=bundle,
-		manifest=manifest,
-		project_root=project_root,
-		allow_audit_failures=allow_audit_failures,
-		features=columns,
-		metric_rows=metric_rows,
-		predictions=prediction_tables,
-		membership=membership_tables,
-		preprocessing=preprocessing,
-		thresholds={"task": "fault_intensity_regression", "thresholds": []},
-	)
-	all_predictions = pd.concat(prediction_tables, ignore_index=True)
-	write_json(
-		run_dir / "intensity_scope.json",
-		{
-			"task": "fault_intensity_regression",
-			"fault_type": fault_type,
-			"intensity_levels": sorted(frame["target_intensity"].unique().tolist()),
-			"routing": "conditional_on_known_fault_type",
-			"global_mae": float(mean_absolute_error(all_predictions["true_intensity"], all_predictions["predicted_intensity"])),
-			"global_rmse": float(mean_squared_error(all_predictions["true_intensity"], all_predictions["predicted_intensity"]) ** 0.5),
 		},
 	)
 	return run_dir

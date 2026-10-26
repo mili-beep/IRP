@@ -1,0 +1,6 @@
+name: D07_xgboost_detection
+# Primary supervised detector. D03 remains the histogram-boosting comparator.
+models:
+  - xgboost
+features: symptom_only
+split_policy: leave_scenario_out

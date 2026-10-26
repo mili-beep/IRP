@@ -1,7 +1,0 @@
-name: E04a_control_inclusive
-models:
-  - statistical
-  - isolation_forest
-features: control_inclusive
-include_weather: false
-split_policy: leave_scenario_out

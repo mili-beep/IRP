@@ -20,6 +20,8 @@ model_candidates:
       components: 100
   supervised:
     - {}
+  xgboost:
+    - {}
 explanation_cases_per_type: 3
 explanation_top_features: 5
 importance_sample_rows: 1000

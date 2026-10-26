@@ -1,7 +1,0 @@
-name: E19_supervised_season_generalisation
-# Same supervised binary detector and symptom-only feature policy as E03.
-# Only the evaluation changes: each season is held out in turn.
-models:
-  - supervised
-features: symptom_only
-split_policy: leave_season_out

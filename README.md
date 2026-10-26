@@ -53,37 +53,51 @@ sfsa audit-rbc \
 
 sfsa train \
   --building-config configs/buildings/rbc_ashrae1312_real.yaml \
-  --experiment-config configs/experiments/E03_supervised.yaml
+  --experiment-config configs/experiments/D07_xgboost_detection.yaml
 ```
 
 Training repeats the required data audit and stops on schema, timestamp,
 baseline/fault-pairing, or reference-file failures. `--allow-audit-failures`
 creates a diagnostic-only run and must not be used for report evidence.
 
+D07 is the selected XGBoost primary binary detector; D03 remains its
+histogram-gradient-boosting comparison. D08 tests D07 under season holdout.
+G03a is the selected XGBoost instrumented-BMS diagnosis study.
+
+## Notebooks
+
+The four notebooks in [notebooks/](notebooks/) are a readable companion to the
+saved experiment artefacts. They do not replace the tested Python pipeline or
+YAML configurations:
+
+1. `01_normal_patterns.ipynb` — P01 normal modes and visual profiles.
+2. `02_detection_experiments.ipynb` — D01–D08 detection comparisons.
+3. `03_diagnosis_experiments.ipynb` — G01–G03a diagnosis comparisons.
+4. `04_operational_outputs.ipynb` — O01 reliability gating and O02 priority cards.
+
 ## Normal patterns and operational outputs
 
 ```bash
 sfsa patterns \
   --building-config configs/buildings/rbc_ashrae1312_real.yaml \
-  --experiment-config configs/experiments/P01_normal_patterns.yaml
+  --experiment-config configs/experiments/P01_normal_operating_patterns.yaml
 
 sfsa events --run-dir results/runs/<benchmark-run>
-sfsa report-qa --run-dir results/runs/<benchmark-run>
 ```
 
 The downstream commands consume saved artefacts only; they do not retrain a
 model or access a live building system. See [the staff guide](docs/staff_guide.md)
-for the event, diagnosis, priority, and dashboard workflow.
+for the event, diagnosis, and priority workflow.
 
 ## Final evidence
 
 `results/final_evidence/` is the compact, Git-friendly evidence package for
 team and examiner review. It contains frozen configurations, manifests,
-metrics, QA evidence, diagnosis artefacts, and selected report figures. Build
+metrics, diagnosis artefacts, and selected report figures. Build
 it from the complete local results archive with:
 
 ```bash
-python scripts/build_final_evidence.py
+python scripts/build_final_evidence.py --replace
 ```
 
 The complete generated `results/final_runs/` archive is intentionally excluded

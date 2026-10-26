@@ -39,7 +39,7 @@ def sha256_file(path: str | Path) -> str:
 def capture_environment(project_root: str | Path) -> dict[str, Any]:
     """Capture runtime, dependency, and lock-file details for one run."""
     root = Path(project_root).resolve()
-    package_names = ("numpy", "pandas", "PyYAML", "scikit-learn", "joblib")
+    package_names = ("numpy", "pandas", "PyYAML", "scikit-learn", "xgboost", "joblib")
     packages: dict[str, str | None] = {}
     for package_name in package_names:
         try:

@@ -1,0 +1,6 @@
+name: D08_xgboost_season_generalisation
+# Seasonal robustness of the frozen D07 XGBoost detector.
+models:
+  - xgboost
+features: symptom_only
+split_policy: leave_season_out

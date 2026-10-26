@@ -41,7 +41,13 @@ from .features import (
     select_feature_columns,
     transform_numeric_features,
 )
-from .models import ZScoreModel, gradient_boosting, isolation_forest, one_class_svm
+from .models import (
+    ZScoreModel,
+    gradient_boosting,
+    isolation_forest,
+    one_class_svm,
+    xgboost_classifier,
+)
 from .utils import capture_environment, set_seed, write_json
 
 
@@ -102,6 +108,8 @@ def _fit_model(
         model = one_class_svm(seed=seed, **parameters).fit(train_x)
     elif model_name == "supervised":
         model = gradient_boosting(seed=seed, **parameters).fit(train_x, train_y)
+    elif model_name == "xgboost":
+        model = xgboost_classifier(seed=seed, **parameters).fit(train_x, train_y)
     else:
         raise ValueError(f"Unknown model configured: {model_name}")
     return model
@@ -111,7 +119,7 @@ def _anomaly_scores(model_name: str, model: Any, features: np.ndarray) -> np.nda
     """Return scores oriented so larger values mean more anomalous."""
     if model_name == "statistical":
         return model.score_samples(features)
-    if model_name == "supervised":
+    if model_name in {"supervised", "xgboost"}:
         return model.predict_proba(features)[:, 1]
     return -model.decision_function(features)
 
@@ -303,15 +311,6 @@ def _prepare_model_frame(
     return prepared, base_columns + temporal_columns
 
 
-def _choose_holdout_date(baseline: pd.DataFrame, faults: pd.DataFrame) -> str:
-    baseline_dates = set(baseline["date_folder"].astype(str))
-    fault_dates = set(faults["date_folder"].astype(str))
-    dates = sorted(baseline_dates & fault_dates)
-    if len(dates) < 2:
-        raise ValueError("At least two paired dates are required for a date holdout")
-    return dates[-1]
-
-
 def _make_run_dir(results_root: Path, building: str, experiment: str) -> Path:
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     path = results_root / f"{stamp}_{building}_{experiment}"
@@ -347,16 +346,6 @@ def run_training(
         from .supervised_tasks import run_fault_type_classification
 
         return run_fault_type_classification(
-            building_config,
-            experiment_config,
-            results_root=results_root,
-            override_values=override_values,
-            allow_audit_failures=allow_audit_failures,
-        )
-    if resolved.get("task") == "fault_intensity_regression":
-        from .supervised_tasks import run_fault_intensity_regression
-
-        return run_fault_intensity_regression(
             building_config,
             experiment_config,
             results_root=results_root,
@@ -529,7 +518,7 @@ def run_training(
                 started = perf_counter()
                 candidate_model = _fit_model(
                     model_name,
-                    fit_x if model_name == "supervised" else normal_x,
+                    fit_x if model_name in {"supervised", "xgboost"} else normal_x,
                     fit_y,
                     seed,
                     parameters,
@@ -629,7 +618,7 @@ def run_training(
                 cases_per_type=int(resolved.get("explanation_cases_per_type", 3)),
                 top_features=int(resolved.get("explanation_top_features", 5)),
             ))
-            if model_name == "supervised" and validation_frame["is_fault"].nunique() == 2:
+            if model_name in {"supervised", "xgboost"} and validation_frame["is_fault"].nunique() == 2:
                 sample_size = min(
                     len(validation_x), int(resolved.get("importance_sample_rows", 1000))
                 )

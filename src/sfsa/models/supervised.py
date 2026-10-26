@@ -2,8 +2,8 @@
 
 from sklearn.ensemble import (
 	HistGradientBoostingClassifier,
-	HistGradientBoostingRegressor,
 )
+from xgboost import XGBClassifier
 
 
 def gradient_boosting(*, seed: int = 42) -> HistGradientBoostingClassifier:
@@ -11,6 +11,18 @@ def gradient_boosting(*, seed: int = 42) -> HistGradientBoostingClassifier:
 	return HistGradientBoostingClassifier(random_state=seed)
 
 
-def gradient_boosting_regressor(*, seed: int = 42) -> HistGradientBoostingRegressor:
-	"""Create the conditional, within-family fault-intensity regressor."""
-	return HistGradientBoostingRegressor(random_state=seed)
+def xgboost_classifier(*, seed: int = 42, **parameters: object) -> XGBClassifier:
+	"""Create the fixed XGBoost classifier used by the primary studies."""
+	return XGBClassifier(
+		n_estimators=100,
+		max_depth=6,
+		learning_rate=0.05,
+		subsample=0.8,
+		colsample_bytree=0.8,
+		tree_method="hist",
+		n_jobs=1,
+		random_state=seed,
+		eval_metric="mlogloss",
+		verbosity=0,
+		**parameters,
+	)

@@ -1,4 +1,0 @@
-# E18: report a diagnosis only when its predicted label has enough held-out
-# fault-day evidence and meets the pre-declared observed-reliability target.
-minimum_reliability: 0.70
-minimum_reports: 5

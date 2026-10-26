@@ -15,6 +15,7 @@ POLICY = {
 
 
 def test_event_grouping_suppresses_adjacent_alert_rows_and_preserves_missed_case():
+
     predictions = pd.DataFrame({
         "fold": [1, 1, 1, 1, 1],
         "model": ["statistical"] * 5,
@@ -31,6 +32,7 @@ def test_event_grouping_suppresses_adjacent_alert_rows_and_preserves_missed_case
         "prediction": [1, 1, 1, 0, 0],
         "y_true": [1, 1, 1, 1, 1],
     })
+
     events = group_events(predictions, POLICY)
     assert len(events) == 1
     assert events.loc[0, "alert_rows"] == 2
@@ -41,15 +43,22 @@ def test_event_grouping_suppresses_adjacent_alert_rows_and_preserves_missed_case
 
 
 def test_event_output_name_cannot_escape_the_run_directory(tmp_path):
+
     with pytest.raises(ValueError, match="safe directory"):
-        build_events(tmp_path, "configs/event_policy.yaml", output_name="../events")
+        build_events(
+            tmp_path,
+            "configs/operational_policies/event_grouping.yaml",
+            output_name="../events",
+        )
 
 
 def test_priority_cards_use_configured_duration_severity_and_asset_policy(tmp_path):
+
     from sfsa.priorities import build_priority_cards
 
     events_dir = tmp_path / "events"
     events_dir.mkdir()
+
     pd.DataFrame({
         "event_id": ["long", "brief"],
         "date_folder": ["d1", "d2"],
@@ -60,8 +69,10 @@ def test_priority_cards_use_configured_duration_severity_and_asset_policy(tmp_pa
         "priority_band": ["low", "low"],
         "recommended_action": ["monitor", "monitor"],
     }).to_csv(events_dir / "events.csv", index=False)
+
     diagnosis_dir = tmp_path / "diagnosis"
     diagnosis_dir.mkdir()
+
     pd.DataFrame({
         "date_folder": ["d1", "d2"],
         "scenario_file": ["cooling.csv", "unknown.csv"],
@@ -69,7 +80,8 @@ def test_priority_cards_use_configured_duration_severity_and_asset_policy(tmp_pa
         "fault_group": ["cooling_coil", "Uncertain"],
         "fault_type": ["cooling_coil_valve_stuck", "Uncertain"],
     }).to_csv(diagnosis_dir / "diagnosis_reports.csv", index=False)
-    policy = ROOT / "configs" / "priority_policy.yaml"
+
+    policy = ROOT / "configs" / "operational_policies" / "O02_priority_policy.yaml"
     output = build_priority_cards(events_dir, diagnosis_dir, policy)
     cards = pd.read_csv(output / "priority_cards.csv")
     long_event = cards.loc[cards["event_id"].eq("long")].iloc[0]

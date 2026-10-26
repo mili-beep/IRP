@@ -1,0 +1,10 @@
+model,metric,folds,mean,median
+xgboost_hierarchical_fault_type,accuracy,40,0.7162847222222222,0.6857638888888888
+xgboost_hierarchical_fault_type,balanced_accuracy,40,0.7162847222222222,0.6857638888888888
+xgboost_hierarchical_fault_type,macro_f1,40,0.3086521293653018,0.29270738619926395
+xgboost_hierarchical_fault_type,macro_precision,40,0.37394841269841267,0.4
+xgboost_hierarchical_fault_type,macro_recall,40,0.2889796075837743,0.26145833333333335
+xgboost_hierarchical_fault_type,coarse_accuracy,40,0.7761371527777777,0.7836805555555555
+xgboost_hierarchical_fault_type,coarse_macro_f1,40,0.44256144185672186,0.42376422061688424
+xgboost_hierarchical_fault_type,fault_type_accuracy,40,0.4326041666666667,0.3715277777777778
+xgboost_hierarchical_fault_type,fine_accuracy_given_correct_group,38,0.7951581207893057,1.0

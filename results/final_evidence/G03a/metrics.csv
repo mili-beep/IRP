@@ -1,0 +1,2 @@
+model,accuracy,balanced_accuracy,coarse_accuracy,coarse_macro_f1,fault_type_accuracy,fine_accuracy_given_correct_group,macro_f1,macro_precision,macro_recall
+xgboost_hierarchical_fault_type,0.7162847222222222,0.7162847222222222,0.7761371527777777,0.44256144185672186,0.4326041666666667,0.7951581207893057,0.3086521293653018,0.37394841269841267,0.2889796075837743

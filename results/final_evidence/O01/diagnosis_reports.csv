@@ -1,0 +1,81 @@
+fold,date_folder,scenario_file,rows,true_fault_group,true_fault_type,predicted_fault_group,predicted_fault_type,group_evidence_reports,group_correct_reports,group_observed_reliability,group_reliable,type_evidence_reports,type_correct_reports,type_observed_reliability,type_reliable,status,fault_group,fault_type
+1,20070820,EADamStuck_100.csv,1440,airside_damper,exhaust_air_damper_stuck,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+1,20070820,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+2,20070821,EADamStuck_0.csv,1440,airside_damper,exhaust_air_damper_stuck,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+2,20070821,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+3,20070822,RetFanFixed_30.csv,1440,return_fan,return_fan_fixed_speed,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+3,20070822,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+4,20070823,RetFan_Fail.csv,1440,return_fan,return_fan_failure,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+4,20070823,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+5,20070826,OADamStuck_0.csv,1440,airside_damper,outdoor_air_damper_stuck,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+5,20070826,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+6,20070827,CooCoiValStuck_0.csv,1440,cooling_coil,cooling_coil_valve_stuck,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+6,20070827,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+7,20070828,HeaCoiValLeak_0.4.csv,1440,heating_coil,heating_coil_valve_leak,heating_coil,heating_coil_valve_leak,7.0,6.0,0.8571428571428571,True,2.0,2.0,1.0,False,Anomaly detected,heating_coil,Uncertain
+7,20070828,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+8,20070829,HeaCoiValLea_1.csv,1440,heating_coil,heating_coil_valve_leak,heating_coil,heating_coil_valve_leak,7.0,6.0,0.8571428571428571,True,2.0,2.0,1.0,False,Anomaly detected,heating_coil,Uncertain
+8,20070829,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+9,20070830,HeaCoiValLa_2.csv,1440,heating_coil,heating_coil_valve_leak,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+9,20070830,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+10,20070831,CooCoiValStuck_100.csv,1440,cooling_coil,cooling_coil_valve_stuck,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+10,20070831,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+11,20070901,CooCoiValStuck_15.csv,1440,cooling_coil,cooling_coil_valve_stuck,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+11,20070901,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+12,20070902,CooCoiValStuck_65.csv,1440,cooling_coil,cooling_coil_valve_stuck,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+12,20070902,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+13,20070905,OADamLeak_45.csv,1440,airside_damper,outdoor_air_damper_leak,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+13,20070905,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+14,20070906,OADamLeak_55.csv,1440,airside_damper,outdoor_air_damper_leak,airside_damper,outdoor_air_damper_leak,21.0,11.0,0.5238095238095238,False,3.0,1.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+14,20070906,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+15,20070907,SupDucLea_AfterSF.csv,1440,airflow_distribution,supply_duct_leak,airside_damper,outdoor_air_damper_leak,21.0,11.0,0.5238095238095238,False,3.0,1.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+15,20070907,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+16,20070908,SupDucLea_BeforeSF.csv,1440,airflow_distribution,supply_duct_leak,airflow_distribution,supply_duct_leak,2.0,1.0,0.5,False,1.0,1.0,1.0,False,Anomaly detected,Uncertain,Uncertain
+16,20070908,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+17,20080202,EADamStuck_100.csv,1440,airside_damper,exhaust_air_damper_stuck,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+17,20080202,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+18,20080203,EADamStuck_0.csv,1440,airside_damper,exhaust_air_damper_stuck,heating_coil,heating_coil_reduced_capacity,7.0,6.0,0.8571428571428571,True,5.0,3.0,0.6,False,Anomaly detected,heating_coil,Uncertain
+18,20080203,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+19,20080205,HeaCoiFou_1.csv,1440,heating_coil,heating_coil_fouling,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+19,20080205,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+20,20080206,HeaCoiFou_2.csv,1440,heating_coil,heating_coil_fouling,heating_coil,heating_coil_reduced_capacity,7.0,6.0,0.8571428571428571,True,5.0,3.0,0.6,False,Anomaly detected,heating_coil,Uncertain
+20,20080206,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+21,20080207,HeatCoiReduCapa_1.csv,1440,heating_coil,heating_coil_reduced_capacity,heating_coil,heating_coil_reduced_capacity,7.0,6.0,0.8571428571428571,True,5.0,3.0,0.6,False,Anomaly detected,heating_coil,Uncertain
+21,20080207,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+22,20080208,HeatCoiReduCapa_2.csv,1440,heating_coil,heating_coil_reduced_capacity,heating_coil,heating_coil_reduced_capacity,7.0,6.0,0.8571428571428571,True,5.0,3.0,0.6,False,Anomaly detected,heating_coil,Uncertain
+22,20080208,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+23,20080209,HeatCoiReduCapa_3.csv,1440,heating_coil,heating_coil_reduced_capacity,heating_coil,heating_coil_reduced_capacity,7.0,6.0,0.8571428571428571,True,5.0,3.0,0.6,False,Anomaly detected,heating_coil,Uncertain
+23,20080209,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+24,20080210,CooCoiValStuck_100.csv,1440,cooling_coil,cooling_coil_valve_stuck,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+24,20080210,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+25,20080211,CooCoiValStuck_20.csv,1440,cooling_coil,cooling_coil_valve_stuck,airside_damper,outdoor_air_damper_leak,21.0,11.0,0.5238095238095238,False,3.0,1.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+25,20080211,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+26,20080212,OADamStuck_0.csv,1440,airside_damper,outdoor_air_damper_stuck,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+26,20080212,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+27,20080213,OADamLea_52.csv,1440,airside_damper,outdoor_air_damper_leak,airside_damper,outdoor_air_damper_stuck,21.0,11.0,0.5238095238095238,False,3.0,2.0,0.6666666666666666,False,Anomaly detected,Uncertain,Uncertain
+27,20080213,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+28,20080506,CooCoiVal_Stuck_0.csv,1440,cooling_coil,cooling_coil_valve_stuck,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+28,20080506,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+29,20080507,OADamStuck_0.csv,1440,airside_damper,outdoor_air_damper_stuck,airside_damper,outdoor_air_damper_stuck,21.0,11.0,0.5238095238095238,False,3.0,2.0,0.6666666666666666,False,Anomaly detected,Uncertain,Uncertain
+29,20080507,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+30,20080508,OADamStuck_40.csv,1440,airside_damper,outdoor_air_damper_stuck,airside_damper,outdoor_air_damper_stuck,21.0,11.0,0.5238095238095238,False,3.0,2.0,0.6666666666666666,False,Anomaly detected,Uncertain,Uncertain
+30,20080508,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+31,20080510,EADamStuck_0.csv,1440,airside_damper,exhaust_air_damper_stuck,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+31,20080510,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+32,20080511,EADamStuck_40.csv,1440,airside_damper,exhaust_air_damper_stuck,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+32,20080511,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+33,20080512,RetFan_Fail.csv,1440,return_fan,return_fan_failure,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+33,20080512,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+34,20080515,CooCoilValStuck_100.csv,1440,cooling_coil,cooling_coil_valve_stuck,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+34,20080515,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+35,20080516,CooCoilValStuck_50.csv,1440,cooling_coil,cooling_coil_valve_stuck,cooling_coil,cooling_coil_valve_stuck,10.0,8.0,0.8,True,10.0,8.0,0.8,True,Anomaly detected,cooling_coil,cooling_coil_valve_stuck
+35,20080516,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+36,20080518,RetFanFixed_20.csv,1440,return_fan,return_fan_fixed_speed,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+36,20080518,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+37,20080519,RetFanFixed_80.csv,1440,return_fan,return_fan_fixed_speed,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+37,20080519,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+38,20080522,AirFilBlock_10.csv,1440,airflow_distribution,air_filter_blockage,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+38,20080522,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+39,20080525,AirFilBlock_25.csv,1440,airflow_distribution,air_filter_blockage,airside_damper,exhaust_air_damper_stuck,21.0,11.0,0.5238095238095238,False,15.0,5.0,0.3333333333333333,False,Anomaly detected,Uncertain,Uncertain
+39,20080525,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable
+40,20080527,EADamStuck_100.csv,1440,airside_damper,exhaust_air_damper_stuck,airflow_distribution,air_filter_blockage,2.0,1.0,0.5,False,1.0,0.0,0.0,False,Anomaly detected,Uncertain,Uncertain
+40,20080527,baseline.csv,1440,normal,normal,normal,normal,,,,,,,,,Normal,Not applicable,Not applicable

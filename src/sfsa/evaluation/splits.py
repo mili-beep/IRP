@@ -63,7 +63,6 @@ def paired_holdout_splits(frame: pd.DataFrame, policy: str) -> list[Split]:
             "leave_scenario_out": "scenario_file",
             "leave_fault_type_out": "fault_type",
             "leave_season_out": "season",
-            "leave_fault_intensity_out": "fault_intensity",
         }
         if policy not in column_by_policy:
             raise ValueError(f"Unknown split policy: {policy}")

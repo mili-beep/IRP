@@ -1,5 +1,0 @@
-name: E11_hierarchical_fault_type_classification
-task: hierarchical_fault_type_classification
-features: symptom_only
-split_policy: leave_date_out
-minimum_scenarios_per_type: 2

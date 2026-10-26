@@ -1,5 +1,0 @@
-name: E03_supervised
-models:
-  - supervised
-features: symptom_only
-split_policy: leave_scenario_out

@@ -11,7 +11,6 @@
         "strategy": "median"
       },
       "include_vav": false,
-      "missingness_report": true,
       "reviewed_mapping_document": "src/sfsa/features.py",
       "temporal": {
         "boundary_columns": [
@@ -76,6 +75,9 @@
       ],
       "supervised": [
         {}
+      ],
+      "xgboost": [
+        {}
       ]
     },
     "normal_modes": {
@@ -89,7 +91,12 @@
       "end": "18:00",
       "start": "06:00"
     },
+    "physics_features": {
+      "enabled": false,
+      "include_control_relationships": false
+    },
     "random_row_split": "diagnostic_only",
+    "scenario_balancing": false,
     "seed": 42,
     "source_type": "real",
     "split_policy": "leave_date_out",
@@ -99,7 +106,7 @@
   "experiment": {
     "features": "control_inclusive",
     "include_weather": true,
-    "name": "P01_normal_patterns",
+    "name": "P01_normal_operating_patterns",
     "normal_modes": {
       "clusters": 4
     }
@@ -123,7 +130,6 @@
         "strategy": "median"
       },
       "include_vav": false,
-      "missingness_report": true,
       "reviewed_mapping_document": "src/sfsa/features.py",
       "temporal": {
         "boundary_columns": [
@@ -168,9 +174,12 @@
       ],
       "supervised": [
         {}
+      ],
+      "xgboost": [
+        {}
       ]
     },
-    "name": "P01_normal_patterns",
+    "name": "P01_normal_operating_patterns",
     "normal_modes": {
       "clusters": 4,
       "silhouette_sample_rows": 2000,
@@ -182,7 +191,12 @@
       "end": "18:00",
       "start": "06:00"
     },
+    "physics_features": {
+      "enabled": false,
+      "include_control_relationships": false
+    },
     "random_row_split": "diagnostic_only",
+    "scenario_balancing": false,
     "seasons": [
       "Summer",
       "Transition",
@@ -216,6 +230,6 @@
   "sources": {
     "building": "configs/buildings/rbc_ashrae1312_real.yaml",
     "defaults": "configs/defaults.yaml",
-    "experiment": "configs/experiments/P01_normal_patterns.yaml"
+    "experiment": "configs/experiments/P01_normal_operating_patterns.yaml"
   }
 }

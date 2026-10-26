@@ -1,4 +1,4 @@
-"""Confidence-aware operational triage for saved hierarchical diagnoses."""
+"""Reliability-gated operational reporting for saved hierarchical diagnoses."""
 
 from __future__ import annotations
 
@@ -8,54 +8,6 @@ import pandas as pd
 
 from .config import load_yaml
 from .utils import write_json
-
-
-def apply_diagnosis_policy(
-	run_dir: str | Path,
-	policy_path: str | Path,
-	*,
-	output_name: str = "diagnosis_policy",
-) -> Path:
-	"""Turn fixed model predictions into high/medium/low-confidence triage advice."""
-	run = Path(run_dir)
-	policy = load_yaml(policy_path)
-	medium = float(policy.get("medium_threshold", 0.50))
-	high = float(policy.get("high_threshold", 0.80))
-	if not 0 <= medium < high <= 1:
-		raise ValueError("Require 0 <= medium_threshold < high_threshold <= 1")
-	predictions = pd.read_csv(run / "predictions.csv")
-	required = {"true_fault_type", "predicted_fault_type", "predicted_fault_group", "confidence"}
-	missing = required - set(predictions.columns)
-	if missing:
-		raise ValueError(f"Diagnosis policy requires prediction columns: {sorted(missing)}")
-	result = predictions.copy()
-	normal = result["predicted_fault_type"].eq("normal")
-	high_mask = ~normal & result["confidence"].ge(high)
-	medium_mask = ~normal & ~high_mask & result["confidence"].ge(medium)
-	result["diagnosis_level"] = "low"
-	result.loc[normal, "diagnosis_level"] = "normal"
-	result.loc[medium_mask, "diagnosis_level"] = "medium"
-	result.loc[high_mask, "diagnosis_level"] = "high"
-	result["diagnosis_recommendation"] = "fault type uncertain; investigate the affected AHU"
-	result.loc[normal, "diagnosis_recommendation"] = "normal operation"
-	result.loc[medium_mask, "diagnosis_recommendation"] = (
-		"inspect " + result.loc[medium_mask, "predicted_fault_group"] + " subsystem"
-	)
-	result.loc[high_mask, "diagnosis_recommendation"] = (
-		"likely " + result.loc[high_mask, "predicted_fault_type"].str.replace("_", " ")
-	)
-	output = run / output_name
-	output.mkdir(parents=True, exist_ok=False)
-	result.to_csv(output / "diagnosis_recommendations.csv", index=False)
-	faults = result[result["true_fault_type"].ne("normal")].copy()
-	summary = faults.groupby("diagnosis_level", dropna=False).agg(
-		rows=("fold", "size"),
-		type_accuracy=("predicted_fault_type", lambda values: (values == faults.loc[values.index, "true_fault_type"]).mean()),
-		group_accuracy=("predicted_fault_group", lambda values: (values == faults.loc[values.index, "true_fault_group"]).mean()),
-	).reset_index()
-	summary.to_csv(output / "diagnosis_policy_summary.csv", index=False)
-	write_json(output / "policy.json", policy)
-	return output
 
 
 def _modal_prediction(report: pd.DataFrame) -> tuple[str, str]:
@@ -117,7 +69,7 @@ def apply_reliability_policy(
 	"""Gate diagnosis labels using complete held-out report evidence.
 
 	This is a reporting policy evaluation, not a replacement for model training.
-	Its evidence table uses the saved out-of-fold E16-style predictions and never
+	Its evidence table uses the saved out-of-fold G03a-style predictions and never
 	uses minute rows as independent reports.
 	"""
 	run = Path(run_dir)

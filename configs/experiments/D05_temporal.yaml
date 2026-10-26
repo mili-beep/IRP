@@ -1,0 +1,9 @@
+name: D05_temporal
+models:
+  - statistical
+  - isolation_forest
+features: symptom_only
+split_policy: leave_scenario_out
+temporal:
+  enabled: true
+  rolling_window: 5
