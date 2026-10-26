@@ -18,11 +18,6 @@ class Split:
     policy: str
 
 
-def split_policy_name() -> str:
-    """Return the canonical default split policy name."""
-    return "leave_date_out"
-
-
 def leave_group_out(frame: pd.DataFrame, group_column: str, held_out: Iterable[str]) -> Split:
     """Hold out complete group values, preserving the original row indexes."""
     if group_column not in frame.columns:

@@ -1,4 +1,4 @@
-"""Feature grouping, selection, missingness, and boundary-safe engineering."""
+"""Feature grouping, selection, and boundary-safe engineering."""
 
 from __future__ import annotations
 
@@ -158,19 +158,6 @@ def add_physics_features(
 		if setpoint and "SA-TEMP" in result.columns:
 			result["physics__supply_air_setpoint_error"] = result["SA-TEMP"] - result[setpoint]
 	return result
-
-
-def missingness_report(frame: pd.DataFrame) -> pd.DataFrame:
-	"""Return one row per column, including fully empty columns."""
-	report = pd.DataFrame({
-		"column": frame.columns,
-		"missing_rows": frame.isna().sum().to_numpy(),
-		"missing_fraction": frame.isna().mean().to_numpy(),
-		"dtype": frame.dtypes.astype(str).to_numpy(),
-	})
-	return report.sort_values(
-		["missing_rows", "column"], ascending=[False, True]
-	).reset_index(drop=True)
 
 
 def fit_numeric_imputer(frame: pd.DataFrame, columns: Iterable[str]) -> SimpleImputer:

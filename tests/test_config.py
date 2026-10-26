@@ -62,20 +62,15 @@ def test_e19_keeps_e03_model_and_features_but_holds_out_each_season():
     assert season_supervised["split_policy"] == "leave_season_out"
 
 
-def test_final_comparison_variants_are_explicit():
+def test_control_comparison_variants_are_explicit():
     control = resolve_run_config(
         BUILDING, ROOT / "configs" / "experiments" / "E04a_control_inclusive.yaml"
     )["resolved"]
     weather = resolve_run_config(
         BUILDING, ROOT / "configs" / "experiments" / "E04b_control_weather.yaml"
     )["resolved"]
-    alert = resolve_run_config(
-        BUILDING, ROOT / "configs" / "experiments" / "E07c_alert_budget_15.yaml"
-    )["resolved"]
     assert control["include_weather"] is False
     assert weather["include_weather"] is True
-    assert alert["models"] == ["isolation_forest"]
-    assert alert["alert_budget"] == 0.15
 
 
 def test_instrumented_diagnosis_is_explicitly_scoped():

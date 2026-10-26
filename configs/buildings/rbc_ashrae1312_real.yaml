@@ -23,7 +23,6 @@ features:
   weather_optional: true
   default_policy: symptom_only
   include_vav: false
-  missingness_report: true
   imputation:
     strategy: median
     fit_on_training_only: true

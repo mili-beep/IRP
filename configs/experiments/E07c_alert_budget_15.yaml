@@ -1,6 +1,0 @@
-name: E07c_alert_budget_15
-models:
-  - isolation_forest
-features: symptom_only
-split_policy: leave_scenario_out
-alert_budget: 0.15

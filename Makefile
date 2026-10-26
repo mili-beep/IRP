@@ -18,4 +18,4 @@ check: lint test
 
 cli:
 	$(PYTHON) -m sfsa.cli --help
-	$(PYTHON) -m sfsa.cli run-info --config configs/buildings/auditorium.yaml
+	$(PYTHON) -m sfsa.cli run-info --config configs/buildings/rbc_ashrae1312_real.yaml

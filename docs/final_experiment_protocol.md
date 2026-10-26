@@ -12,7 +12,6 @@ technical failure or an approved configuration correction.
 | E04 | E01, `E04a_control_inclusive.yaml`, `E04b_control_weather.yaml` | Symptom-only vs controls vs controls plus weather |
 | E05 | E01, `E05_temporal.yaml` | Static symptom features vs boundary-safe temporal features |
 | E06 | `E06_generalisation.yaml` | Season holdout generalisation |
-| E07 | `E07a_alert_budget_05.yaml`, `E07b_alert_budget_10.yaml`, `E07c_alert_budget_15.yaml` | One pre-specified Isolation Forest detector at 5%, 10%, and 15% alert budgets |
 | E09 | `E09_fault_type_classification.yaml` | Supervised normal-plus-fault-type classification on repeatedly observed families |
 | E10 | `E10_cooling_coil_intensity.yaml` | Conditional cooling-coil-valve intensity regression across numeric severity levels |
 | E11 | `E11_hierarchical_fault_type_classification.yaml` | Coarse operational-group diagnosis followed by within-group fault-type diagnosis |
@@ -25,14 +24,7 @@ technical failure or an approved configuration correction.
 | E18 | `E18_reliability_gated.yaml` applied to E16 | Report-level reliability gate: show a fault group/type only if its predicted label has at least five held-out fault-day reports and at least 70% observed correctness |
 | E19 | `E19_supervised_season_generalisation.yaml` | E03 supervised binary detector under leave-one-season-out generalisation evaluation |
 
-E07 event grouping is a second fixed comparison after each E07 benchmark. Run
-each saved E07 result with `event_policy.yaml` (standard),
-`event_policy_lenient.yaml`, and `event_policy_strict.yaml`, using distinct
-`--output-name` values such as `events_standard`, `events_lenient`, and
-`events_strict`. This preserves all outputs instead of overwriting them.
-
-P01 normal patterns and E08 canonical access demonstration are supporting
-artefacts, not comparable model benchmarks.
+P01 normal patterns is a supporting artefact, not a comparable model benchmark.
 
 E09 and E10 are an approved supervised-diagnosis extension. E10 must always
 be described as conditional on a known fault type; it is not a global intensity

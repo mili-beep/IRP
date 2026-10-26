@@ -19,8 +19,7 @@ repeated evaluation, use `metrics_by_fold.csv` for individual held-out results,
 `metrics_summary.csv` for aggregate means/medians/confidence intervals,
 `thresholds.json` for validation-calibrated thresholds, and
 `split_membership.csv` to inspect partitions. `metrics.csv` remains a compact
-mean-metric table for simple visualisations. Notebooks should consume these
-saved artefacts; they should not retrain models.
+mean-metric table for simple visualisations.
 
 Phase 3 also writes `validation_model_selection.csv`, which records every
 declared candidate and the validation-only selection result, and
@@ -49,21 +48,14 @@ sfsa train \
   --set occupied_hours.apply=true
 ```
 
-## Notebook order
+## Use pattern outputs in the report
 
-1. `01_data_audit.ipynb`: inspect the real file tree, schema, timestamps, and pairings.
-2. `02_patterns.ipynb`: inspect baseline operating patterns and missingness.
-3. `03_results.ipynb`: compare completed run metrics and predictions.
-4. `04_case_studies.ipynb`: inspect one scenario and its detection timeline.
-
-For Phase 4, run `sfsa patterns` with `P01_normal_patterns.yaml` before using
-`02_patterns.ipynb`. Use `normal_mode_catalogue.csv` with
-`normal_mode_feature_profiles.csv` to describe each mode, cite
-`normal_mode_quality.json` for stability/separation, and use the two PNG files
-under `figures/` in the report or presentation. `fault_mode_comparisons.csv`
-contains controlled-fault observations rather than production alerts; later
-event runs should join their alerts to the saved mode model using timestamp and
-scenario identifiers.
+Run `sfsa patterns` with `P01_normal_patterns.yaml`. Use
+`normal_mode_catalogue.csv` with `normal_mode_feature_profiles.csv` to describe
+each mode, cite `normal_mode_quality.json` for stability/separation, and use
+the two PNG files under `figures/` in the report or presentation.
+`fault_mode_comparisons.csv` contains controlled-fault observations rather than
+production alerts.
 
 ## Create operational artefacts from a completed run
 

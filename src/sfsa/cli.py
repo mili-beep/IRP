@@ -4,7 +4,6 @@ import argparse
 from pathlib import Path
 
 from .config import load_yaml
-from .data.canonical import canonicalise_access_file
 from .data.manifest import build_real_manifest
 from .data.rbc_ashrae1312 import discover_real_files, validate_pairing
 from .diagnosis import apply_diagnosis_policy, apply_reliability_policy
@@ -53,9 +52,6 @@ def build_parser() -> argparse.ArgumentParser:
     events.add_argument("--policy", default=Path("configs/event_policy.yaml"), type=Path)
     events.add_argument("--patterns-run", type=Path, help="Optional P01 normal-mode run for event context")
     events.add_argument("--output-name", default="events", help="Named event subdirectory; default: events")
-    access = subparsers.add_parser("canonicalise-access", help="Validate and adapt access-control demonstration logs")
-    access.add_argument("--input", required=True, type=Path)
-    access.add_argument("--output-dir", required=True, type=Path)
     dashboard = subparsers.add_parser("dashboard", help="Build a static investigation view from saved run artefacts")
     dashboard.add_argument("--run-dir", required=True, type=Path)
     dashboard.add_argument("--patterns-run", type=Path, help="Optional P01 normal-mode run for normal-mode evidence")
@@ -134,10 +130,6 @@ def main() -> None:
             output_name=args.output_name,
         )
         print(f"Saved event artefacts to {output}")
-    elif args.command == "canonicalise-access":
-        records, audit = canonicalise_access_file(args.input, args.output_dir)
-        print(f"Saved canonical records to {records}")
-        print(f"Saved canonical audit to {audit}")
     elif args.command == "dashboard":
         output = build_investigation_view(args.run_dir, patterns_run=args.patterns_run)
         print(f"Saved static investigation view to {output}")

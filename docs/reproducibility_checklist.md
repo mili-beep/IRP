@@ -1,11 +1,11 @@
-# Submission reproducibility checklist
+# Submission reproducibility requirements
 
-- [ ] Create a clean virtual environment and install `.[quality]`.
-- [ ] Run `python -m pytest -q` and `python -m ruff check .`.
-- [ ] Audit the raw RBC data and save a manifest.
-- [ ] Run each required headline experiment without `max_folds`.
-- [ ] Run Phase 4 normal-mode discovery and Phase 5 events for selected runs.
-- [ ] Build the dashboard and regenerate figures from saved artefacts.
-- [ ] Run `sfsa report-qa --run-dir ...` for every cited benchmark.
-- [ ] Record run IDs beside every report number, table, and figure.
-- [ ] Confirm limitations and E08's demonstration-only status are stated.
+Before making a release or reporting a result:
+
+1. Create a clean virtual environment and install `.[quality]`.
+2. Run `python -m pytest -q` and `python -m ruff check .`.
+3. Audit the raw RBC data and save a manifest.
+4. Use only complete-fold headline experiments without `max_folds`.
+5. Run `sfsa report-qa --run-dir ...` for every cited benchmark.
+6. Record run IDs beside every report number, table, and figure.
+7. State the controlled-fault, one-facility, and full-day-label limitations.

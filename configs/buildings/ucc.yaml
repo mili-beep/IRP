@@ -1,5 +1,0 @@
-name: ucc
-data_path: data/raw/ucc
-label_column: null
-group_column: null
-time_column: null

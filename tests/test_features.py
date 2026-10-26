@@ -6,7 +6,6 @@ from sfsa.features import (
     add_temporal_features,
     classify_columns,
     fit_numeric_imputer,
-    missingness_report,
     select_feature_columns,
     transform_numeric_features,
 )
@@ -69,14 +68,6 @@ def test_weather_join_prefixes_non_colliding_weather_columns():
     joined = join_weather(scenario, weather)
     assert "weather__WIND-VEL" in joined
     assert "WIND-VEL" not in joined
-
-
-def test_missingness_report_includes_fully_empty_columns():
-    report = missingness_report(pd.DataFrame({"empty": [None, None], "partial": [1.0, None]}))
-    values = report.set_index("column")
-    assert values.loc["empty", "missing_rows"] == 2
-    assert values.loc["empty", "missing_fraction"] == 1.0
-    assert values.loc["partial", "missing_fraction"] == 0.5
 
 
 def test_imputer_is_fit_and_applied_as_a_separate_step():

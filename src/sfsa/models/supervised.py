@@ -7,7 +7,7 @@ from sklearn.ensemble import (
 
 
 def gradient_boosting(*, seed: int = 42) -> HistGradientBoostingClassifier:
-	"""Create the baseline supervised classifier without optional XGBoost."""
+	"""Create the supervised histogram-gradient-boosting classifier."""
 	return HistGradientBoostingClassifier(random_state=seed)
 
 

@@ -1,4 +1,0 @@
-name: E08_canonical_access_demo
-source_type: demonstration_only
-source_system: access_control
-input: data/examples/access_control_demo.csv

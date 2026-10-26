@@ -8,11 +8,6 @@ import numpy as np
 import pandas as pd
 
 
-def metric_names() -> tuple[str, ...]:
-    """Return the required binary detection metrics."""
-    return ("f1", "precision", "recall", "fpr")
-
-
 def event_metrics(
     frame: pd.DataFrame,
     predictions: Iterable[int],
