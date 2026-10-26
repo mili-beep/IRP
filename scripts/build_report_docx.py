@@ -348,7 +348,6 @@ def add_image(document: Document, alt: str, relative_path: str) -> None:
 def add_body(document: Document, lines: list[str]) -> None:
     started = False
     index = 0
-    first_body_heading = True
     while index < len(lines):
         raw = lines[index]
         stripped = raw.strip()
