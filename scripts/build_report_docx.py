@@ -4,16 +4,13 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
-from urllib.parse import urlparse
 
 from docx import Document
-from docx.enum.section import WD_SECTION
 from docx.enum.table import WD_ALIGN_VERTICAL, WD_TABLE_ALIGNMENT
-from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK, WD_LINE_SPACING
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
-
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "report" / "final_report.md"
@@ -359,7 +356,6 @@ def add_body(document: Document, lines: list[str]) -> None:
             started = True
             paragraph = document.add_paragraph("Executive Summary", style="Heading 1")
             set_repeat_and_keep(paragraph, True)
-            first_body_heading = False
             index += 1
             continue
         if not started:
@@ -383,7 +379,6 @@ def add_body(document: Document, lines: list[str]) -> None:
             label = heading.group(2).strip()
             paragraph = document.add_paragraph(label, style=f"Heading {min(level, 3)}")
             set_repeat_and_keep(paragraph, True)
-            first_body_heading = False
             index += 1
             continue
         if stripped.startswith(">"):
