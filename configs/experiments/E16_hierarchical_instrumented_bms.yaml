@@ -1,0 +1,10 @@
+name: E16_hierarchical_instrumented_bms
+task: hierarchical_fault_type_classification
+features: control_inclusive
+include_weather: false
+physics_features:
+  enabled: true
+  include_control_relationships: true
+scenario_balancing: false
+split_policy: leave_date_out
+minimum_scenarios_per_type: 2

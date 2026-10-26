@@ -1,0 +1,10 @@
+predicted_fault_group,predicted_fault_type,reports,correct_reports,observed_reliability,eligible
+airflow_distribution,air_filter_blockage,2,0,0.0,False
+airflow_distribution,supply_duct_leak,1,1,1.0,False
+airside_damper,exhaust_air_damper_stuck,11,4,0.36363636363636365,False
+airside_damper,outdoor_air_damper_leak,3,1,0.3333333333333333,False
+airside_damper,outdoor_air_damper_stuck,3,2,0.6666666666666666,False
+cooling_coil,cooling_coil_valve_stuck,10,7,0.7,True
+heating_coil,heating_coil_reduced_capacity,6,3,0.5,False
+heating_coil,heating_coil_valve_leak,3,3,1.0,False
+return_fan,return_fan_fixed_speed,1,1,1.0,False

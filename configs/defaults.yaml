@@ -1,0 +1,40 @@
+seed: 42
+alert_budget: 0.10
+split_policy: leave_date_out
+validation_fraction: 0.20
+physics_features:
+  enabled: false
+  include_control_relationships: false
+scenario_balancing: false
+bootstrap_iterations: 1000
+model_candidates:
+  statistical:
+    - {}
+  isolation_forest:
+    - contamination: 0.05
+    - contamination: 0.10
+  one_class_svm:
+    - nu: 0.05
+      components: 100
+    - nu: 0.10
+      components: 100
+  supervised:
+    - {}
+explanation_cases_per_type: 3
+explanation_top_features: 5
+importance_sample_rows: 1000
+normal_modes:
+  clusters: 4
+  silhouette_sample_rows: 2000
+  stability_sample_rows: 5000
+  stability_repeats: 2
+headline_split: complete_date
+random_row_split: diagnostic_only
+source_type: real
+expected_interval: 1min
+timezone: null
+missing_data_policy: report_then_configure_imputation
+occupied_hours:
+  start: "06:00"
+  end: "18:00"
+  apply_by_default: false

@@ -1,0 +1,10 @@
+name: E14_hierarchical_safe_context_balanced
+task: hierarchical_fault_type_classification
+features: context_inclusive
+include_weather: true
+physics_features:
+  enabled: true
+  include_control_relationships: true
+scenario_balancing: true
+split_policy: leave_date_out
+minimum_scenarios_per_type: 2

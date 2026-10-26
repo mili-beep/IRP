@@ -1,0 +1,2 @@
+model,accuracy,balanced_accuracy,macro_f1,macro_precision,macro_recall
+supervised_fault_type,0.7180121527777777,0.7180121527777777,0.29828892683876496,0.36008146369376687,0.27982692625661376

@@ -1,0 +1,87 @@
+# Decisions
+
+## 2026-10-21: Package-first rebuild
+
+The training pipeline, data contracts, evaluation protocol, and configuration are separated so notebooks do not become a second implementation of model training.
+
+## 2026-10-21: Real RBC-ASHRAE1312 is the primary dataset
+
+The project scope moved from the auditorium dataset to the real RBC-ASHRAE1312 tree. Simulation data remains available for future transfer experiments but is excluded from the first release.
+
+## 2026-10-21: Scenario labels are inherited from files
+
+RBC fault files provide scenario-level labels through filenames and the supplied taxonomy. The project will not claim an exact row-level fault onset until that behavior is validated.
+
+## 2026-10-21: Preserve raw feature names and units
+
+The source abbreviations remain in the canonical data. Descriptions and units are mapped in documentation and configuration rather than silently replacing raw values.
+
+## 2026-10-25: Resolve configuration before every training run
+
+Each run now composes `configs/defaults.yaml`, the selected building
+configuration, the selected experiment configuration, and explicitly supplied
+command-line overrides. The complete result is saved as
+`config.resolved.json`. This prevents undocumented defaults or sensitivity
+settings from changing an experiment without a record.
+
+## 2026-10-25: Correct RBC timestamp interpretation
+
+The local AHU scenario files store `TIME` as an `HHMM` value, despite earlier
+documentation describing it as a minute-within-day field. For example, `2359`
+means 23:59, not 2,359 minutes after midnight. The parser now supports those
+AHU values as well as the conventional date/time text used in local weather
+files. This removes false cadence gaps and makes occupied-hours and temporal
+features valid.
+
+## 2026-10-25: Make data audit an accepted-run gate
+
+Training now creates a manifest and rejects accepted runs with inconsistent
+scenario schemas, invalid baseline/fault timestamp pairs, timestamp-quality
+problems, or missing source reference files. A diagnostic override is available
+but recorded and excluded from accepted evidence.
+
+## 2026-10-25: Keep weather, temporal, and occupied-hours analysis explicit
+
+Weather joins, temporal features, and occupied-hours filtering are disabled by
+default. Each can be enabled only through an experiment setting or explicit
+command-line override, and the resolved setting and feature list are saved with
+the run. This avoids silently changing the meaning of benchmark comparisons.
+
+## 2026-10-25: Use repeated paired-safe holdouts with validation-calibrated thresholds
+
+Headline evaluation now supports complete-date, scenario, fault-family, season,
+and intensity holdouts. A held-out unit always carries its paired same-date
+normal baseline into the test fold. Complete dates inside the remaining data
+are reserved for validation; only validation normal rows select the configured
+alert-budget threshold. Test folds are used solely for final evaluation.
+
+## 2026-10-25: Select model settings by validation utility, not test F1
+
+Phase 3 evaluates only the small, declared model parameter grids. Within each
+fold it chooses the candidate with the highest validation recall minus
+false-positive rate, calculated after calibrating the threshold from validation
+normal observations at the declared alert budget. F1 resolves a tie only.
+
+This makes alert burden an explicit selection consideration and leaves all
+held-out test predictions for reporting. The run retains every candidate's
+settings, threshold, validation metrics, fit time, and selected status. Alert
+explanations use standardised feature deviations; supervised permutation
+importance is labelled as evidence for the separate labelled-classification
+experiment.
+
+## 2026-10-25: Keep normal-mode discovery separate from detector evaluation
+
+Phase 4 fits normal operating modes only on labelled baseline records. The
+normal-mode run is distinct from fault-detector benchmarks so that exploratory
+clustering does not change their leakage-controlled evaluation. K-means is
+used because its centres are inspectable; PCA is only a two-dimensional report
+visualisation, not the clustering input. Mode quality records silhouette and
+repeat-sample adjusted Rand index, while fault comparisons use the nearest
+normal mode and feature deviations from its centre.
+
+## 2026-10-25: Report fold variation rather than one selected result
+
+Each run saves fold-level, group-level, and scenario-level results, plus
+mean/median summaries and deterministic bootstrap confidence intervals. This
+makes inconsistent performance and alert burden visible instead of allowing a
+single convenient fault scenario to become the headline result.

@@ -1,0 +1,6 @@
+timestamp,door_id,event,status,measurements
+2026-01-15T08:00:00,Door-A,access_granted,normal,"{\"badge_zone\": \"staff\"}"
+2026-01-15T08:02:00,Door-A,access_granted,normal,"{\"badge_zone\": \"staff\"}"
+2026-01-15T22:13:00,Door-B,access_denied,warning,"{\"attempts_last_5m\": 3}"
+2026-01-15T22:14:00,Door-B,access_denied,warning,"{\"attempts_last_5m\": 4}"
+2026-01-16T07:58:00,Door-A,door_forced_open,critical,"{\"open_seconds\": 18}"

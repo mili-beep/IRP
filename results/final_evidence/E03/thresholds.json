@@ -1,0 +1,373 @@
+{
+  "thresholds": [
+    {
+      "alert_budget": 0.1,
+      "fold": 1,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022291666666666668,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 2,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.010208333333333333,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 3,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.03666666666666667,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 4,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022291666666666668,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 5,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022291666666666668,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 6,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.028680555555555556,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 7,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.03341049382716049,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 8,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.036458333333333336,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 9,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022708333333333334,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 10,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.03375,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 11,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.09020833333333333,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 12,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.1901731020154304e-05,
+      "validation_fpr": 0.0,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 13,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022291666666666668,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 14,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022291666666666668,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 15,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.025277777777777777,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 16,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.03225308641975309,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 17,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.021064814814814814,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 18,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.051111111111111114,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 19,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.029930555555555554,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 20,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.042986111111111114,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 21,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.031180555555555555,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 22,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.08326388888888889,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 23,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.036180555555555556,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 24,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022291666666666668,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 25,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.025763888888888888,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 26,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.021666666666666667,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 27,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.028888888888888888,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 28,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.08180555555555556,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 29,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022430555555555554,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 30,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.034513888888888886,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 31,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.07881944444444444,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 32,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.002006172839506173,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 33,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.06152777777777778,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 34,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022291666666666668,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 35,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.035069444444444445,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 36,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022291666666666668,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 37,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.03364197530864198,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 38,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.07131944444444445,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 39,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.032916666666666664,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 40,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022222222222222223,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 41,
+      "model": "supervised",
+      "parameters": {},
+      "threshold": 2.190173102015426e-05,
+      "validation_fpr": 0.022291666666666668,
+      "validation_normal_rows": 14400
+    }
+  ]
+}

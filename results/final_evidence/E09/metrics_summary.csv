@@ -1,0 +1,6 @@
+model,metric,folds,mean,median
+supervised_fault_type,accuracy,40,0.7180121527777777,0.7064236111111111
+supervised_fault_type,balanced_accuracy,40,0.7180121527777777,0.7064236111111111
+supervised_fault_type,macro_f1,40,0.29828892683876496,0.29235052126029537
+supervised_fault_type,macro_precision,40,0.36008146369376687,0.3333333333333333
+supervised_fault_type,macro_recall,40,0.27982692625661376,0.27375578703703707

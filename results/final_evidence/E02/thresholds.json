@@ -1,0 +1,464 @@
+{
+  "thresholds": [
+    {
+      "alert_budget": 0.1,
+      "fold": 1,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.019782970988853385,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 1,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.003172103539031221,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 2,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.018622286007153942,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 2,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.005899237267506839,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 3,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.018301414172990093,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 11520
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 3,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.004975363902778585,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 11520
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 4,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.028383476274707248,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 4,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.005203874236674222,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 5,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.01622481986384856,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 11520
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 5,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.0025514549403210757,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 11520
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 6,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.0054818393639658475,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 6,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.004484698921823017,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 7,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.01709270513243634,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 7,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.0056606636311135545,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 8,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.0020357916142410945,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 8,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.0042091979208490745,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 9,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.028056391629934927,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 9,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.0034160146862391235,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 10,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.012526692133946946,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 10,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.0044641637323926415,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 11,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.01782824889535258,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 11,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.0025226011705936227,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 12,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.01695166513216698,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 12,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.001682798134389783,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 13,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.013459493472200608,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 13,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.003146510401405902,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 14,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.0034451883498995205,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 14,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.004089653909782353,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 15,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.020488447748561265,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 15,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.0024921044126783674,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 12960
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 16,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.024723303297805775,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 16,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.005636181767149126,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 17,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.015686379164505302,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 17,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.0018024205900569364,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 18,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.00616406529689832,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 18,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.002122714843988203,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 19,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.008992592416904808,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 19,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": 0.00039533699282183043,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 20,
+      "model": "isolation_forest",
+      "parameters": {
+        "contamination": 0.05
+      },
+      "threshold": -0.01659656341269789,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    },
+    {
+      "alert_budget": 0.1,
+      "fold": 20,
+      "model": "one_class_svm",
+      "parameters": {
+        "components": 100,
+        "nu": 0.05
+      },
+      "threshold": -0.0024502084413186194,
+      "validation_fpr": 0.1,
+      "validation_normal_rows": 14400
+    }
+  ]
+}

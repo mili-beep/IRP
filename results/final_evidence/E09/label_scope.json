@@ -1,0 +1,29 @@
+{
+  "excluded_fault_types": [
+    "cooling_coil_valve_reverse_action",
+    "exhaust_air_damper_leak",
+    "outdoor_temperature_sensor_bias_negative",
+    "outdoor_temperature_sensor_bias_positive",
+    "unstable_cooling_coil_valve_control",
+    "unstable_heating_cooling_sequence",
+    "unstable_mixed_air_damper",
+    "unstable_mixed_air_damper_cooling_coil_control",
+    "unstable_supply_fan_control"
+  ],
+  "included_fault_types": [
+    "air_filter_blockage",
+    "cooling_coil_valve_stuck",
+    "exhaust_air_damper_stuck",
+    "heating_coil_fouling",
+    "heating_coil_reduced_capacity",
+    "heating_coil_valve_leak",
+    "outdoor_air_damper_leak",
+    "outdoor_air_damper_stuck",
+    "return_fan_failure",
+    "return_fan_fixed_speed",
+    "supply_duct_leak"
+  ],
+  "minimum_scenarios_per_type": 2,
+  "split_policy": "leave_date_out",
+  "task": "fault_type_classification"
+}

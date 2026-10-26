@@ -1,0 +1,4 @@
+model,metric,folds,mean,median
+supervised_intensity_cooling_coil_valve_stuck,mae,6,20.57433528787163,14.999827663460575
+supervised_intensity_cooling_coil_valve_stuck,rmse,6,21.710613241169877,15.132796274009113
+supervised_intensity_cooling_coil_valve_stuck,mean_error,6,-4.656271045998426,-9.514327712952605

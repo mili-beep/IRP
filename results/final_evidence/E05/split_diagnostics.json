@@ -1,0 +1,262 @@
+{
+  "alert_budget": 0.1,
+  "fold_count": 41,
+  "folds": [
+    {
+      "fold": 1,
+      "held_out_dates": [
+        "20080522"
+      ]
+    },
+    {
+      "fold": 2,
+      "held_out_dates": [
+        "20080525"
+      ]
+    },
+    {
+      "fold": 3,
+      "held_out_dates": [
+        "20070824"
+      ]
+    },
+    {
+      "fold": 4,
+      "held_out_dates": [
+        "20080601"
+      ]
+    },
+    {
+      "fold": 5,
+      "held_out_dates": [
+        "20080514"
+      ]
+    },
+    {
+      "fold": 6,
+      "held_out_dates": [
+        "20070827"
+      ]
+    },
+    {
+      "fold": 7,
+      "held_out_dates": [
+        "20070831",
+        "20080210"
+      ]
+    },
+    {
+      "fold": 8,
+      "held_out_dates": [
+        "20070901"
+      ]
+    },
+    {
+      "fold": 9,
+      "held_out_dates": [
+        "20080211"
+      ]
+    },
+    {
+      "fold": 10,
+      "held_out_dates": [
+        "20070902"
+      ]
+    },
+    {
+      "fold": 11,
+      "held_out_dates": [
+        "20070903"
+      ]
+    },
+    {
+      "fold": 12,
+      "held_out_dates": [
+        "20080506"
+      ]
+    },
+    {
+      "fold": 13,
+      "held_out_dates": [
+        "20080515"
+      ]
+    },
+    {
+      "fold": 14,
+      "held_out_dates": [
+        "20080516"
+      ]
+    },
+    {
+      "fold": 15,
+      "held_out_dates": [
+        "20080215"
+      ]
+    },
+    {
+      "fold": 16,
+      "held_out_dates": [
+        "20070821",
+        "20080203",
+        "20080510"
+      ]
+    },
+    {
+      "fold": 17,
+      "held_out_dates": [
+        "20070820",
+        "20080202",
+        "20080527"
+      ]
+    },
+    {
+      "fold": 18,
+      "held_out_dates": [
+        "20080511"
+      ]
+    },
+    {
+      "fold": 19,
+      "held_out_dates": [
+        "20080205"
+      ]
+    },
+    {
+      "fold": 20,
+      "held_out_dates": [
+        "20080206"
+      ]
+    },
+    {
+      "fold": 21,
+      "held_out_dates": [
+        "20070830"
+      ]
+    },
+    {
+      "fold": 22,
+      "held_out_dates": [
+        "20070829"
+      ]
+    },
+    {
+      "fold": 23,
+      "held_out_dates": [
+        "20070828"
+      ]
+    },
+    {
+      "fold": 24,
+      "held_out_dates": [
+        "20080517"
+      ]
+    },
+    {
+      "fold": 25,
+      "held_out_dates": [
+        "20080207"
+      ]
+    },
+    {
+      "fold": 26,
+      "held_out_dates": [
+        "20080208"
+      ]
+    },
+    {
+      "fold": 27,
+      "held_out_dates": [
+        "20080209"
+      ]
+    },
+    {
+      "fold": 28,
+      "held_out_dates": [
+        "20080513"
+      ]
+    },
+    {
+      "fold": 29,
+      "held_out_dates": [
+        "20080213"
+      ]
+    },
+    {
+      "fold": 30,
+      "held_out_dates": [
+        "20070905"
+      ]
+    },
+    {
+      "fold": 31,
+      "held_out_dates": [
+        "20070906"
+      ]
+    },
+    {
+      "fold": 32,
+      "held_out_dates": [
+        "20070826",
+        "20080212",
+        "20080507"
+      ]
+    },
+    {
+      "fold": 33,
+      "held_out_dates": [
+        "20080508"
+      ]
+    },
+    {
+      "fold": 34,
+      "held_out_dates": [
+        "20080518"
+      ]
+    },
+    {
+      "fold": 35,
+      "held_out_dates": [
+        "20070822"
+      ]
+    },
+    {
+      "fold": 36,
+      "held_out_dates": [
+        "20080519"
+      ]
+    },
+    {
+      "fold": 37,
+      "held_out_dates": [
+        "20070823",
+        "20080512"
+      ]
+    },
+    {
+      "fold": 38,
+      "held_out_dates": [
+        "20070907"
+      ]
+    },
+    {
+      "fold": 39,
+      "held_out_dates": [
+        "20070908"
+      ]
+    },
+    {
+      "fold": 40,
+      "held_out_dates": [
+        "20080530"
+      ]
+    },
+    {
+      "fold": 41,
+      "held_out_dates": [
+        "20080529"
+      ]
+    }
+  ],
+  "policy": "leave_scenario_out",
+  "validation_fraction": 0.2
+}

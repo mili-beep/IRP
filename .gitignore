@@ -1,0 +1,23 @@
+.venv/
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local datasets and generated artifacts
+data/raw/*
+data/interim/*
+data/processed/*
+results/runs/*
+results/report/*
+# Full generated archive is shared separately; commit results/final_evidence/ instead.
+results/final_runs/*
+app/.streamlit/
+
+# Keep directory documentation and checksums
+data/**/.gitkeep
+data/**/README.md
+data/**/checksums.txt
+results/**/.gitkeep

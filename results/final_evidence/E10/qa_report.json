@@ -1,0 +1,114 @@
+{
+  "accepted": true,
+  "checks": [
+    {
+      "detail": "present",
+      "name": "required:config.resolved.json",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:data_manifest.json",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:environment.json",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:features.json",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:split_membership.csv",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:predictions.csv",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:metrics.csv",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:metrics_by_fold.csv",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:metrics_summary.csv",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:thresholds.json",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "present",
+      "name": "required:preprocessing.joblib",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "12 fold-model files found",
+      "name": "saved-models",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "accepted audit gate",
+      "name": "audit-gate",
+      "passed": true,
+      "severity": "warning"
+    },
+    {
+      "detail": "all configured folds",
+      "name": "complete-folds",
+      "passed": true,
+      "severity": "warning"
+    },
+    {
+      "detail": "manifest accepted",
+      "name": "data-manifest",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "predictions=['supervised_intensity_cooling_coil_valve_stuck'], metrics=['supervised_intensity_cooling_coil_valve_stuck']",
+      "name": "model-consistency",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "continuous-score and decision fields saved",
+      "name": "prediction-fields",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "detail": "selection artefact missing",
+      "name": "candidate-selection",
+      "passed": false,
+      "severity": "warning"
+    }
+  ],
+  "run": "/Users/mili/Desktop/IRP/results/final_runs/20261025T130022Z_rbc_ashrae1312_real_E10_cooling_coil_intensity"
+}

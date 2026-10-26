@@ -1,0 +1,2 @@
+model,accuracy,balanced_accuracy,coarse_accuracy,coarse_macro_f1,fault_type_accuracy,fine_accuracy_given_correct_group,macro_f1,macro_precision,macro_recall
+supervised_hierarchical_fault_type,0.7008333333333333,0.7008333333333333,0.7792708333333334,0.4479659225920651,0.4017013888888889,0.7290781677806557,0.3054160195720665,0.3717857142857143,0.2876226438492063

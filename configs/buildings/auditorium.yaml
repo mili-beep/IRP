@@ -1,0 +1,7 @@
+name: auditorium
+data_path: data/raw/auditorium
+label_column: labeling
+group_column: AHU name
+time_column: Time
+normal_label: Normal condition
+expected_interval: 1h

@@ -1,0 +1,94 @@
+# Prototype operational priority policy. Confirm these assumptions with the
+# facilities client before any live deployment.
+weights:
+  severity: 0.50
+  duration: 0.30
+  criticality: 0.20
+
+duration_levels:
+  - min_minutes: 0
+    level: 1
+    label: Under 15 minutes
+  - min_minutes: 15
+    level: 2
+    label: 15 to 60 minutes
+  - min_minutes: 60
+    level: 3
+    label: 1 to 4 hours
+  - min_minutes: 240
+    level: 4
+    label: 4 to 8 hours
+  - min_minutes: 480
+    level: 5
+    label: Over 8 hours
+
+default_asset: rbc_ers_ahu
+assets:
+  rbc_ers_ahu:
+    criticality: 3
+    label: Medium (project assumption; client confirmation required)
+
+severity:
+  default:
+    level: 3
+    label: Undetermined impact; treat as a standard AHU investigation
+  fault_groups:
+    airside_damper:
+      level: 3
+      label: Ventilation or temperature-control impact
+    airflow_distribution:
+      level: 3
+      label: Airflow-delivery impact
+    cooling_coil:
+      level: 4
+      label: Cooling-capacity or comfort impact
+    heating_coil:
+      level: 4
+      label: Heating-capacity or comfort impact
+    return_fan:
+      level: 5
+      label: Ventilation and pressure-control impact
+  fault_types:
+    air_filter_blockage:
+      level: 3
+      label: Airflow restriction and fan-load impact
+    cooling_coil_valve_stuck:
+      level: 4
+      label: Cooling-capacity impact
+    exhaust_air_damper_stuck:
+      level: 3
+      label: Ventilation-control impact
+    heating_coil_fouling:
+      level: 4
+      label: Heating-capacity impact
+    heating_coil_reduced_capacity:
+      level: 4
+      label: Heating-capacity impact
+    heating_coil_valve_leak:
+      level: 4
+      label: Heating-control and energy-use impact
+    outdoor_air_damper_leak:
+      level: 3
+      label: Ventilation-control impact
+    outdoor_air_damper_stuck:
+      level: 3
+      label: Ventilation-control impact
+    return_fan_failure:
+      level: 5
+      label: Ventilation and pressure-control impact
+    return_fan_fixed_speed:
+      level: 4
+      label: Airflow-control impact
+    supply_duct_leak:
+      level: 4
+      label: Airflow-delivery impact
+
+priority_bands:
+  medium_min: 40
+  high_min: 60
+  critical_min: 80
+actions:
+  low: Monitor in the next review cycle.
+  medium: Inspect during the next shift.
+  high: Investigate today.
+  critical: Escalate immediately to the facilities duty manager.

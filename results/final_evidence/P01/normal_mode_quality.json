@@ -1,0 +1,14 @@
+{
+  "clusters": 4,
+  "controlled_fault_observations": 70560,
+  "feature_count": 70,
+  "normal_observations": 70560,
+  "pca_explained_variance_ratio": [
+    0.3719362931458231,
+    0.1873983285460833
+  ],
+  "silhouette_sample_rows": 2000,
+  "silhouette_score": 0.35542318561917213,
+  "stability_ari_mean": 0.7909501194966506,
+  "stability_repeats": 2
+}

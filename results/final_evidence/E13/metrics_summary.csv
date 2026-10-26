@@ -1,0 +1,10 @@
+model,metric,folds,mean,median
+supervised_hierarchical_fault_type,accuracy,40,0.6861111111111111,0.6546875
+supervised_hierarchical_fault_type,balanced_accuracy,40,0.6861111111111111,0.6546875
+supervised_hierarchical_fault_type,macro_f1,40,0.2964710976804594,0.2870963828527616
+supervised_hierarchical_fault_type,macro_precision,40,0.3706547619047619,0.3666666666666667
+supervised_hierarchical_fault_type,macro_recall,40,0.2779977678571429,0.2574074074074074
+supervised_hierarchical_fault_type,coarse_accuracy,40,0.7626388888888889,0.7616319444444444
+supervised_hierarchical_fault_type,coarse_macro_f1,40,0.42542012355307834,0.4000017561038361
+supervised_hierarchical_fault_type,fault_type_accuracy,40,0.37225694444444446,0.309375
+supervised_hierarchical_fault_type,fine_accuracy_given_correct_group,38,0.7228059581241685,0.9967490247074122

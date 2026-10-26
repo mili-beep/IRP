@@ -1,0 +1,35 @@
+name: rbc_ashrae1312_real
+data_path: data/raw/01_RBC-ASHRAE1312/Real
+source_type: real
+seasons:
+  - Summer
+  - Transition
+  - Winter
+date_folder_format: "%m%d%Y"
+baseline_filename: baseline.csv
+weather_filename: weather.csv
+timestamp:
+  date_column: DATE
+  time_column: TIME
+  time_format: HHMM
+  expected_interval: 1min
+  timezone: null
+labels:
+  scenario_from_filename: true
+  taxonomy_document: docs/reference/rbc_ashrae1312/fault_taxonomy.md
+features:
+  dictionary_document: docs/reference/rbc_ashrae1312/feature_dictionary.md
+  reviewed_mapping_document: src/sfsa/features.py
+  weather_optional: true
+  default_policy: symptom_only
+  include_vav: false
+  missingness_report: true
+  imputation:
+    strategy: median
+    fit_on_training_only: true
+  temporal:
+    enabled: false
+    rolling_window: 5
+    boundary_columns:
+      - scenario_file
+      - date_folder
